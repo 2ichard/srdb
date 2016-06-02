@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="../script/util.js"></script>
+<script src="../script/angular.js"></script>
+<script src="../script/angular-cookies.js"></script>
+<script src="../script/radialHoleMeasController.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../css/srdb.css" />
+<title>Radial Hole Measurements</title>
+</head>
+
+<body id="deeppinkgrad" ng-app="srdbRadialHoleMeasApp">
+<form id="form1" name="form1" method="post" action="">
+<table width="95%" align="center" border="1" cellspacing="0" cellpadding="5" bordercolor="#DDDDDD" 
+		ng-controller="RadialHoleMeasCtrl" ng-init="init('%%seg%%', '%%proc%%', '%%ver%%', '%%sec%%', '%%step%%')">
+	<tr>
+		<td align="center"><table width="95%" border="0" cellspacing="2" cellpadding="2">
+			<tr>
+				<td nowrap="nowrap">
+					<table border="0" cellspacing="2" cellpadding="2">
+					<tr>
+						<td nowrap="nowrap" colspan="2">
+							<span class="title1_not_bold"> 
+							<a href="../index.html"> Segment Repair Database</a></span>
+						</td>
+					</tr>
+					<tr>
+						<td nowrap="nowrap"><span class="title1">Radial Hole Measurements</span></td>
+						<td valign="middle" nowrap="nowrap" class="title2">&nbsp;</td>
+					</tr>
+					</table>
+				</td>
+				<td nowrap="nowrap" align="right"><table border="0" cellspacing="2" cellpadding="2">
+					<tr>
+						<td align="left" nowrap="nowrap">
+							<span class="title1_not_bold">Segment</span>
+							<span class="title1_italic">%%seg%%</span></td>
+						</tr>
+					<tr>
+						<td align="left" nowrap="nowrap" class="title1_not_bold">
+						Procedure <span class="title1">%%proc%%</span>, Section <span class="title1">%%sec%%</span>, 
+						Step <span class="title1">%%step%%</span></td>
+						</tr>
+				</table></td>
+			</tr>
+		</table></td>
+	</tr>
+
+	<tr>
+		<td align="center">
+		
+		
+<!-- start of tables -->
+<table border="0" cellspacing="2" cellpadding="2">
+	<tr align="center">
+		<td><table border="0" cellspacing="2" cellpadding="2">
+			<tr>
+				<td nowrap="nowrap"><a href="#part_1" class="figure_link"><span class="figure_caption">Part 1 - Completed during SRP110</span></a></td>
+			</tr>
+			<tr>
+				<td class="figure_caption"><a href="#part_2">Part 2 - Completed during SRP112</a></td>
+			</tr>
+			<tr>
+				<td class="figure_caption"><a href="#part_3">Part 3 - Completed during SRP113</a></td>
+			</tr>
+		</table></td>
+	</tr>
+	<tr align="center">
+		<td nowrap="nowrap" class="figure_caption">Dyer bore Gage indicator pre-set to +0.00800 inside Ring Gage Master</td>
+	</tr>
+	<tr align="center">
+		<td><br /><br />			
+		
+		<a name="part_1" id="part_1"></a><span class="figure_caption">
+		Part 1 - Completed during SRP110 - all data in inches</span><br />
+		<br />
+
+	<table width="100%" border="1" cellspacing="0" cellpadding="2" bordercolor="#BBBBBB">
+		<tr>
+				<td rowspan="4" align="left" valign="bottom" class="figure_caption">Measurement<br />
+					Location</td>
+				<td align="center" nowrap="nowrap" class="figure_caption_ul">A</td>
+				<td align="center" class="figure_caption_ul">B</td>
+				<td align="center" nowrap="nowrap" class="figure_caption_ul">C = B - A</td>
+				<td>&nbsp;</td>
+			</tr>
+	<tr>
+		<td align="center" nowrap="nowrap"><span class="figure_caption">UNGROUND<br />
+			Surface</span></td>
+		<td align="center" nowrap="nowrap"><span class="figure_caption">GROUND<br />
+			Surface at 11 mm up</span></td>
+		<td align="center" nowrap="nowrap"><span class="figure_caption">Calc. GROUND Surface<br />
+			at 11 mm up</span></td>
+	</tr>
+	<tr>
+		<td align="center" nowrap="nowrap"><span class="figure_caption">Standoff Hole #1</span></td>
+		<td align="center"><span class="figure_caption">Standoff Hole #5</span></td>
+		<td align="center" nowrap="nowrap"><span class="figure_caption">Standoff Hole #5</span></td>
+	</tr>
+	<tr>
+		<td align="center" valign="bottom" nowrap="nowrap"><span class="figure_caption">(Dyer Gage Reading)</span></td>
+		<td align="center" valign="bottom"><span class="figure_caption">(Dyer Gage Reading)</span></td>
+		<td align="center" valign="bottom" nowrap="nowrap"><span class="figure_caption">(Rqt: 0.0072 to 0.0088 <br />
+			greater than unground)</span></td>
+	</tr>
+	
+	<tr ng-repeat="location in [1, 2, 3]">
+	
+	<!-- location -->
+	<td align="left" valign="bottom" class="figure_caption">{{locationNames[1][location]}}</td>
+				
+				
+	<!-- A -->
+	<td ng-show="inedit[1][location]" align="center">
+		<input size="8" ng-model="locationData[location].A" /><br />
+		<span class="kindoftiny">{{range['A'].min | number : 4}} to {{range['A'].max | number : 5}}</span></td>
+	<td ng-hide="inedit[1][location]" ng-click="edit(1, location)" align="center">
+		{{locationData[location].A == '' ? 'null' : locationData[location].A | number : 5}}</td>
+				
+	<!-- B -->
+	<td ng-show="inedit[1][location]" align="center">
+		<input size="8" ng-model="locationData[location].B" /><br />
+		<span class="kindoftiny">{{range['B'].min | number : 5}} to {{range['B'].max | number : 5}}</span></td>
+	<td ng-hide="inedit[1][location]" ng-click="edit(1, location)" align="center">
+		{{locationData[location].B == '' ? 'null' : locationData[location].B | number : 5}}</td>
+				
+	<!-- C -->
+	<td  align="center">
+		{{locationData[location].C == '' ? 'null' : locationData[location].C | number : 4}}</td>
+							
+	<!-- buttons -->
+	<td align="center" ng-hide="inedit[1][location]" nowrap valign="top">
+		<button ng-click="edit(1, location)">Edit</button></td>
+	<td align="center" ng-show="inedit[1][location]" nowrap valign="top">
+		<button ng-click="savePart1(location)">Save</button>
+		<button ng-click="cancel(1, location)">Cancel</button></td>		
+	</tr>
+</table>
+	</td>
+	</tr>
+	<tr>
+	<td align="center"><br /><br />			
+	<a name="part_2" id="part_2"></a><span class="figure_caption"> 
+	Part 2 - Completed during SRP112 - all data in inches</span><br />
+	<br />
+	<table width="100%" border="1" cellspacing="0" cellpadding="2" bordercolor="#BBBBBB">
+	<tr>
+		<td rowspan="4" align="left" valign="bottom" class="figure_caption">Measurement<br />
+			Location</td>
+		<td align="center" nowrap="nowrap" class="figure_caption_ul">D</td>
+		<td align="center" class="figure_caption_ul">E = D - B</td>
+		<td align="center" nowrap="nowrap" class="figure_caption_ul">EP = E - {{constants.EPk1 | number : 4}}</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td align="center" nowrap="nowrap"><span class="figure_caption">Etched<br />
+			Surface at 11 mm up
+		</span></td>
+		<td rowspan="2" align="center" valign="top" nowrap="nowrap">
+			<span class="figure_caption">Calc. ETCH Amount</span></td>
+		<td rowspan="2" align="center" valign="top" nowrap="nowrap">
+			<span class="figure_caption">Projected ETCH Amount<br />
+			at 3.8 mm up
+		</span></td>
+	</tr>
+	<tr>
+		<td align="center" nowrap="nowrap"><span class="figure_caption">Standoff Hole #5</span></td>
+		</tr>
+	<tr>
+		<td align="center" valign="bottom" nowrap="nowrap">
+			<span class="figure_caption">(Dyer Gage Reading)</span></td>
+		<td align="center" valign="bottom" class="figure_caption">(Rqt: &ge; 0.00512)</td>
+		<td align="center" valign="bottom" nowrap="nowrap">
+			<span class="figure_caption">(Rqt: &ge; 0.00512)</span></td>
+	</tr>
+	
+	<tr ng-repeat="location in [1, 2, 3]">
+	
+		<!-- location -->
+		<td align="left" valign="bottom" class="figure_caption">{{locationNames[2][location]}}</td>
+		
+		<!-- D -->
+		<td ng-show="inedit[2][location]" align="center">
+			<input size="8" ng-model="locationData[location].D" /><br />
+			<span class="kindoftiny">{{range['D'].min | number : 5}} to {{range['D'].max | number : 5}}</span></td>
+		<td ng-hide="inedit[2][location]" ng-click="edit(2, location)" align="center"> 
+			{{locationData[location].D == '' ? 'null' : locationData[location].D | number : 4}}</td>
+			
+		<!-- E -->
+		<td align="center">
+			{{locationData[location].E == '' ? 'null' : locationData[location].E | number : 4}}</td>
+			
+		<!-- EP -->
+		<td align="center"> 
+			{{locationData[location].EP == '' ? 'null' : locationData[location].EP | number : 4}}</td>
+			
+		<!-- buttons -->
+		<td align="center" ng-hide="inedit[2][location]" nowrap="nowrap" valign="top">
+			<button ng-click="edit(2, location)">Edit</button></td>
+		<td align="center" ng-show="inedit[2][location]" nowrap="nowrap" valign="top">
+			<button ng-click="savePart2(location)">Save</button>
+			<button ng-click="cancel(2, location)">Cancel</button></td>
+		</tr>
+	</table></td>
+	</tr>
+	<tr>
+		<td align="center"><br /><br />			
+		<a name="part_3" id="part_3"></a><span class="figure_caption"> 
+				Part 3 - Completed during SRP113 - all data in inches</span><br />
+			<br />
+	<table width="100%" border="1" cellspacing="0" cellpadding="2" bordercolor="#BBBBBB">
+	<tr>
+		<td rowspan="3" align="left" valign="bottom" class="figure_caption">Measurement<br />
+			Location</td>
+		<td align="center" valign="top" nowrap="nowrap" class="figure_caption_ul">F</td>
+		<td align="center" valign="top" class="figure_caption_ul">
+			G = (D + {{constants.Gk1 | number : 4}} - F) <br />
+			/ {{constants.Gk2 | number : 0}} - {{constants.Gk3 | number : 3}}</td>
+		<td align="center" valign="top" nowrap="nowrap" class="figure_caption_ul">
+			H = G - {{constants.Hk1 | number : 3}}</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td align="center" nowrap="nowrap"><span class="figure_caption">MR Across<br />
+			Flex Vanes
+			</span></td>
+		<td rowspan="2" align="center" nowrap="nowrap"><p class="figure_caption">Calc. Average<br />
+			Radial Gap
+			<br />
+			w/ thinnest pads
+			</p></td>
+		<td rowspan="2" align="center" nowrap="nowrap"><span class="figure_caption">Calc Shim Thickness<br />
+			Required to Achieve<br />
+			Average Max.<br />
+			Radial Gap of 0.028
+			</span></td>
+	</tr>
+	<tr>
+		<td align="center" valign="bottom" nowrap="nowrap"><span class="figure_caption">(Caliper)</span></td>
+	</tr>
+	<tr ng-repeat="location in [1, 2, 3]">
+	
+		<!-- location -->
+		<td align="left" valign="bottom" class="figure_caption">{{locationNames[3][location]}}</td>
+		
+		<!-- F -->
+		<td ng-show="inedit[3][location]" align="center">
+			<input size="8" ng-model="locationData[location].F" /><br />
+			<span class="kindoftiny">{{range['F'].min | number : 5}} to {{range['F'].max | number : 5}}</span></td>
+		<td ng-hide="inedit[3][location]" ng-click="edit(3, location)" align="center"> 
+			{{locationData[location].F == '' ? 'null' : locationData[location].F | number : 4}}</td>
+			
+		<!-- G -->
+		<td align="center">
+			{{locationData[location].G == '' ? 'null' : locationData[location].G | number : 4}}</td>
+			
+		<!-- H -->
+		<td align="center">
+			{{locationData[location].H == '' ? 'null' : locationData[location].H | number : 4}}</td>
+			
+		<!-- buttons -->
+		<td align="center" ng-hide="inedit[3][location]" nowrap="nowrap" valign="top">
+			<button ng-click="edit(3, location)">Edit</button></td>
+		<td align="center" ng-show="inedit[3][location]" nowrap="nowrap" valign="top">
+			<button ng-click="savePart3(location)">Save</button>
+			<button ng-click="cancel(3, location)">Cancel</button></td>
+	</tr>
+	</table><br /></td>
+	</tr>
+</table>
+<!-- end of tables -->
+			
+		</td>
+	</tr>
+</table><br />
+				
+</form>
+</body>
+</html>

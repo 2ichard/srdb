@@ -1,0 +1,8 @@
+create table signoff_list (
+	id MEDIUMINT KEY AUTO_INCREMENT,
+	proc VARCHAR(8) NOT NULL,
+	version VARCHAR(8) NOT NULL,
+	section MEDIUMINT NOT NULL,
+	step MEDIUMINT NOT NULL,
+	type VARCHAR(16)
+	);

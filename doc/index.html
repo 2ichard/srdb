@@ -1,0 +1,74 @@
+<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/srdb.css" />
+<style type="text/css">
+hr {
+	color: #F00;
+}
+</style>
+<title>SRDB</title>
+<script src="script/util.js"></script>
+<script src="./script/angular.js"></script>
+<script src="./script/angular-cookies.js"></script>
+<script src="./script/mainPageController.js"></script>
+<script>
+
+</script>
+</head>
+
+<body id="grad4" ng-app="srdbMainPageApp">
+<form id="form1" name="form1" method="post" action="">
+	<table border="0" align="center" cellpadding="5" cellspacing="1" 
+		ng-controller="MainCtrl" ng-init="(variant='public')">
+		<tr>
+			<td colspan="4" align="center" valign="top" class="title1_italic">
+			Segment Repair Database
+				<hr /></td>
+		</tr>
+		<tr>
+			<td valign="top" nowrap><table border="0" cellspacing="1" cellpadding="5">
+
+				<tr>
+					<td align="left" nowrap="nowrap">
+					<a href="pages/LaunchPage.php">Segment Procedure Launch</a></td>
+				</tr>
+				<tr>
+					<td align="left" nowrap="nowrap" ng-init="setContent('content')"><a href="pages/BatchLaunchPage.php">
+					Batch Procedure Launch</a></td>
+				</tr>
+				<tr>
+					<td nowrap="nowrap" ng-init="setContent('content')"><a href="./pages/SignOffReport.php">Sign-off Report</a></td>
+				</tr>
+				<tr>
+					<td nowrap="nowrap" ng-init="setContent('content')"><a href="./pages/ProcNotesReport.php">Procedure Notes Report</a></td>
+				</tr>
+				<tr ng-show="showContentSetting" ng-init="hideContentSetting()">
+					<td nowrap="nowrap" ng-init="setContent('content')">
+					Content&nbsp;=&nbsp;{{contentCookie}}</td>
+				</tr>
+			</table>
+
+				
+				
+				
+	<table border="0" cellspacing="1" cellpadding="5">
+	
+	<tr ng-show="showContentSetting" ng-init="hideContentSetting()">
+		<td width="30" valign="top" nowrap class="section_title">&nbsp;</td>
+		<td valign="top" ng-init="setContent('content')" id="content_value">&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	</table>
+				</td>
+			
+			
+		</tr>
+	</table>
+</form>
+</body>
+</html>

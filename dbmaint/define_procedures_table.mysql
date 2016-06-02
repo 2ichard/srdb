@@ -1,0 +1,7 @@
+create table procedures (
+	id mediumint KEY AUTO_INCREMENT,
+	num varchar(16),
+	type varchar(16),
+	title varchar(80),
+	filename varchar(80),
+	seq int);

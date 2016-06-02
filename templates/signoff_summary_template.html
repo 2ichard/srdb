@@ -1,0 +1,84 @@
+
+<!-- signoff summary template -->
+<span class="section_title">Sign-Off Summary</span>&nbsp;
+<a ng-href="#here" ng-click="setSignOffSummaryVisible(true)" ng-hide="signOffSummaryVisible" class="collapselink">Show</a>
+<a ng-href="#here" ng-click="setSignOffSummaryVisible(false)" ng-show="signOffSummaryVisible" class="collapselink">Hide</a>
+<br /><br />
+<table ng-show="signOffSummaryVisible" width="90%" cellpadding="1" cellspacing="0" border="1" bordercolor="#DDDDDD" align="center">
+<tr>
+	<!--
+	<td class="figure_caption" align="center">Section</td>
+	<td class="figure_caption" align="center">Step</td>
+	<td class="figure_caption" align="center" style="width: 125px">Type</td>
+	<td class="figure_caption" align="center">By</td>
+	<td class="figure_caption" align="center">Time</td>
+	<td class="figure_caption" align="center">Label</td>
+	<td class="figure_caption" align="left">Value</td>
+	<td class="figure_caption" align="left">Notes</td>
+	-->
+	
+	
+	<td class="figure_caption" align="center" style="width: 50px">Section</td>
+	<td class="figure_caption" align="center" style="width: 50px">Step</td>
+	<td class="figure_caption" align="center" style="width: 150px">Type</td>
+	<td class="figure_caption" align="center" style="width: 75px">By</td>
+	<td class="figure_caption" align="center" style="width: 150px">Time</td>
+	<td class="figure_caption" align="center" style="width: 75px">Label</td>
+	<td class="figure_caption" align="left" style="width: 150px">Value</td>
+	<td class="figure_caption" align="left" style="width: 200px">Notes</td>
+	
+	
+	
+</tr>
+<tr ng-class="{'done': (signOffData[item.section][item.step].signedoff == true),
+ 'not_done': (signOffData[item.section][item.step].signedoff != true)}" 
+	ng-repeat="item in signOffList">
+	
+	<!--
+	<td nowrap valign="top" align="center">
+		<a href="#section_{{item.section}}">{{item.section}}</a></td>
+	<td nowrap valign="top" align="center">
+		<a href="#step_{{item.section}}_{{item.step}}">{{item.step}}</a></td>
+	<td nowrap valign="top" align="center" style="width: 125px">
+		<a href="#step_{{item.section}}_{{item.step}}">&nbsp;{{item.title}}&nbsp;</a></td>
+	<td nowrap valign="top" align="center">
+		<a href="#step_{{item.section}}_{{item.step}}">
+		{{signOffData[item.section][item.step].tech}}</a></td>
+	<td nowrap valign="top" align="center">
+		<a href="#step_{{item.section}}_{{item.step}}">
+		{{signOffData[item.section][item.step].timestamp}}</a></td>
+	<td nowrap valign="top" align="center">
+		<a href="#step_{{item.section}}_{{item.step}}">
+		{{item.label}}</a></td>
+	<td valign="top" align="left">
+		<a href="#step_{{item.section}}_{{item.step}}">{{signOffData[item.section][item.step].value}}</a></td>
+	<td valign="top"align="left">
+		<a href="#step_{{item.section}}_{{item.step}}">{{signOffData[item.section][item.step].notes}}</a></td>
+	-->
+	<td nowrap valign="top" align="center" style="width: 50px">
+		<a href="#section_{{item.section}}">{{item.section}}</a></td>
+	<td nowrap valign="top" align="center" style="width: 50px">
+		<a href="#step_{{item.section}}_{{item.step}}">{{item.step}}</a></td>
+	<td nowrap valign="top" align="center" style="width: 150px">
+		<a href="#step_{{item.section}}_{{item.step}}">&nbsp;{{item.title}}&nbsp;</a></td>
+	<td nowrap valign="top" align="center" style="width: 75px">
+		<a href="#step_{{item.section}}_{{item.step}}">
+		{{signOffData[item.section][item.step].tech}}</a></td>
+	<td nowrap valign="top" align="center" style="width: 150px">
+		<a href="#step_{{item.section}}_{{item.step}}">
+		{{signOffData[item.section][item.step].timestamp}}</a></td>
+	<td nowrap valign="top" align="center" style="width: 75px">
+		<a href="#step_{{item.section}}_{{item.step}}">
+		{{item.label}}</a></td>
+	<td valign="top" align="left" style="width: 150px">
+		<a href="#step_{{item.section}}_{{item.step}}">{{signOffData[item.section][item.step].value}}</a></td>
+	<td valign="top"align="left" style="width: 200px">
+		<a href="#step_{{item.section}}_{{item.step}}">{{signOffData[item.section][item.step].notes}}</a></td>
+		
+			
+</tr>
+
+</table>
+<hr />
+<!-- end signoff summary template -->
+	

@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="../script/util.js"></script>
+<script src="../script/angular.js"></script>
+<script src="../script/angular-cookies.js"></script>
+<script src="../script/flexRodLotNosController.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../css/srdb.css" />
+<title>Flex Rod Lot Numbers</title>
+</head>
+
+<body id="deeppinkgrad" ng-app="srdbFlexRodLotNosApp">
+<form id="form1" name="form1" method="post" action="">
+<table width="95%" align="center" border="1" cellspacing="0" cellpadding="5" bordercolor="#DDDDDD" 
+		ng-controller="FlexRodLotNosCtrl"  ng-init="lot='%%lot%%'">
+	<tr>
+		<td align="center"><table width="95%" border="0" cellspacing="2" cellpadding="2">
+			<tr>
+				<td nowrap="nowrap"><table border="0" cellspacing="2" cellpadding="2">
+					<tr>
+						<td nowrap="nowrap" colspan="2"><span class="title1_not_bold"> 
+						 <a href="../index.html"> Segment Repair Database</a></span></td>
+					</tr>
+					<tr>
+						<td nowrap="nowrap"><span class="modeind"><span class="title1">
+						Flex Rod Lot Numbers</span></span></td>
+						<td valign="middle" nowrap="nowrap" class="title2">&nbsp;</td>
+					</tr>
+				</table></td>
+				<td nowrap="nowrap" align="right"><table border="0" cellspacing="2" cellpadding="2">
+					<tr>
+						<td align="right" nowrap="nowrap">
+							<span class="title1_not_bold">Segment</span>
+							<span class="title1_italic">{{seg}}</span></td>
+						
+						<td align="right" class="title1">&nbsp;</td>
+						</tr>
+					<tr>
+						<td align="right" nowrap="nowrap" class="title1_not_bold">&nbsp;</td>
+						<td width="50" align="center">&nbsp;</td>
+						</tr>
+				</table></td>
+			</tr>
+		</table></td>
+	</tr>
+	<tr>
+		<td align="center">
+		
+<!-- -->
+		
+<br />
+						
+<table>
+	<tr>
+		<td ng-repeat="color in colors">
+			<table cellpadding="2" cellspacing="0" border="1" bordercolor="#BBBBBB">
+				<tr>
+					<td colspan="4" align="center"><strong>{{color | uppercase}} Whiffletree</strong></td>
+				
+				</tr>
+				<tr>
+					<td align="center" valign="bottom">Flex Rod<br />
+						Designation</td>
+					<td align="center" valign="bottom" nowrap="nowrap">Lot #<br /></td>
+					<td align="center" valign="bottom">Timestamp</td>
+					<td>&nbsp</td>
+				</tr>
+				
+				<tr ng-show="enableAll[color]">
+					<td align="center">All</td>
+					<td align="center">
+						<select ng-model="lotAll[color]" ng-options="lot for lot in lotList"/></td>
+					<td align="center">-</td>
+					<td slign="center" nowrap="nowrap">
+						<button ng-click="saveAll(color)">Apply to All</button></td>
+				
+				<tr ng-repeat="designation in designations | filter: ((color[0] | uppercase) + '-')">
+					
+					<!-- designation -->
+					<td align="center">{{designation}}</td>
+					
+					<!-- lot number -->
+					<td ng-show="inedit[designation]" align="center">
+						<select ng-model="flexRod[designation].lot" ng-options="lot for lot in lotList"/></td>
+					<td ng-hide="inedit[designation]" ng-click="edit(designation)" align="center" nowrap="nowrap">
+						{{flexRod[designation].lot =='' ? '' : flexRod[designation].lot}}</td>
+					
+					<!-- timestamp -->
+					<td nowrap="nowrap" align="center">{{flexRod[designation].timestamp}}</td>
+					
+					<!-- buttons -->
+					<td align="center" ng-hide="inedit[designation]" nowrap valign="top">
+							<button ng-click="edit(designation)">Edit</button></td>
+					<td align="center" ng-show="inedit[designation]" nowrap valign="top">
+							<button ng-click="save(designation)">Save</button>
+							<button ng-click="cancel(designation)">Cancel</button></td>				
+							
+				</tr>
+				
+				<tr ng-hide="enableAll[color]">
+					<td colspan="4" align=center>
+						<button ng-click="(enableAll[color]=true)">Enable 'Apply to All' button </button>
+					</td>
+				</tr>
+			
+
+			</table>
+		</td>
+	</tr>
+</table>
+		
+<!-- -->		
+		
+		</td></tr>
+			
+</table></form>
+</body>
+</html>

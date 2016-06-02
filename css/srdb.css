@@ -1,0 +1,219 @@
+@charset "UTF-8";
+/* CSS Document */
+a {
+	text-decoration: none;
+}
+a:link {
+	color: #000;
+	text-decoration: none;
+}
+a:visited {
+	color: #000;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+	color: #00F;
+}
+a:active {
+	text-decoration: none;
+	color: #F00;
+}
+
+#grad1
+{
+height:1400%;
+background: -webkit-linear-gradient(rgba(0, 0, 0, 1), rgba(0, 256, 0, 1)); /* For Safari */
+background: -o-linear-gradient(red, blue); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(red, blue); /* For Firefox 3.6 to 15 */
+background: linear-gradient(white, steelblue); /* Standard syntax (must be last) */
+}
+
+#grad2
+{
+	height: 100%;
+	background: -webkit-linear-gradient(rgba(0, 0, 0, 1), rgba(0, 256, 0, 1)); /* For Safari */
+	background: -o-linear-gradient(red, blue); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(red, blue); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(white, yellow); /* Standard syntax (must be last) */
+}
+#grad3
+{
+background: -webkit-linear-gradient(rgba(0, 0, 0, 1), rgba(0, 256, 0, 1)); /* For Safari */
+background: -o-linear-gradient(red, blue); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(red, blue); /* For Firefox 3.6 to 15 */
+background: linear-gradient(white, goldenrod); /* Standard syntax (must be last) */
+background-attachment:fixed;
+height:100%;
+}
+
+#grad4
+{
+background: -webkit-linear-gradient(rgba(0, 0, 0, 1), rgba(0, 256, 0, 1)); /* For Safari */
+background: -o-linear-gradient(red, blue); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(red, blue); /* For Firefox 3.6 to 15 */
+background: linear-gradient(white, turquoise); /* Standard syntax (must be last) */
+background-attachment:fixed;
+height:100%;
+}
+
+#grad5
+{
+height:150%;
+background: -webkit-linear-gradient(rgba(0, 0, 0, 1), rgba(0, 256, 0, 1)); /* For Safari */
+background: -o-linear-gradient(red, blue); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(red, blue); /* For Firefox 3.6 to 15 */
+background: linear-gradient(white, aquamarine); /* Standard syntax (must be last) */
+}
+
+#grad6
+{
+background: -webkit-linear-gradient(rgba(0, 0, 0, 1), rgba(0, 256, 0, 1)); /* For Safari */
+background: -o-linear-gradient(red, blue); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(red, blue); /* For Firefox 3.6 to 15 */
+background: linear-gradient(white, cadetblue); /* Standard syntax (must be last) */
+background-attachment:fixed;
+height:100%;
+}
+#deeppinkgrad
+{
+background: -webkit-linear-gradient(rgba(0, 0, 0, 1), rgba(0, 256, 0, 1)); /* For Safari */
+background: -o-linear-gradient(red, blue); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(red, blue); /* For Firefox 3.6 to 15 */
+background: linear-gradient(white, royalblue); /* Standard syntax (must be last) */
+background-attachment:fixed;
+height:100%;
+}
+
+#g20
+{
+background: -webkit-linear-gradient(rgba(0, 0, 0, 1), rgba(0, 256, 0, 1)); /* For Safari */
+background: -o-linear-gradient(red, blue); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(red, blue); /* For Firefox 3.6 to 15 */
+background: linear-gradient(white, lightgrey); /* Standard syntax (must be last) */
+background-attachment:fixed;
+height:100%;
+}
+
+#batchpagegrad
+{
+background: -webkit-linear-gradient(rgba(0, 0, 0, 1), rgba(0, 256, 0, 1)); /* For Safari */
+background: -o-linear-gradient(red, blue); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(red, blue); /* For Firefox 3.6 to 15 */
+background: linear-gradient(white, #DEB887); /* Standard syntax (must be last) */
+background-attachment:fixed;
+height:100%;
+}
+
+#reportpagegrad
+{
+background: -webkit-linear-gradient(rgba(0, 0, 0, 1), rgba(0, 256, 0, 1)); /* For Safari */
+background: -o-linear-gradient(red, blue); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(red, blue); /* For Firefox 3.6 to 15 */
+background: linear-gradient(white, #FFFF66); /* Standard syntax (must be last) */
+background-attachment:fixed;
+height:100%;
+}
+
+.title1 {
+	font-weight: bold;
+	font-size: 18px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.title2 {	
+}
+.title2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 12px;
+}
+.modeind {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+.collapselink {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: 0x0000FF;
+}
+.collapselink:link {
+	color: #0000FF;
+	text-decoration: none;
+}
+
+.collapselink:hover {
+	text-decoration: underline;
+	color: #00F;
+}
+
+.table_heading {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+}
+.table_heading_ul {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	text-decoration: underline;
+}
+.table_cell {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+.title1_italic {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-style: italic;
+	font-weight: bold;
+}
+.title1_not_bold {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: normal;
+}
+.figure_caption {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+}
+.figure_caption_ul {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.figure_link {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14px;
+	font-weight: bold;
+}
+.section_info {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: italic;
+}
+.section_title {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+}
+.inline_table {
+	display: inline;
+}
+.done {
+	background-color: #CCFFCC;
+}
+.not_done {
+}
+
+.kindoftiny {
+	font-size: 11px;
+	color: #000;
+}
+textarea {
+	width: 100%;
+	height: 100%;
+}

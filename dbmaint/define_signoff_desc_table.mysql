@@ -1,0 +1,10 @@
+create table signoff_desc (
+	id MEDIUMINT KEY AUTO_INCREMENT,
+	type VARCHAR(16) NOT NULL,
+	title VARCHAR(64) NOT NULL,
+	label VARCHAR(16) NOT NULL,
+	valType VARCHAR(8) NOT NULL,
+	minVal VARCHAR(8),
+	maxVal VARCHAR(8),
+	choices VARCHAR(256)
+	);

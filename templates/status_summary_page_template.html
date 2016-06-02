@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="../css/srdb.css" />
+<script>
+var montharray=new Array("January","February","March",
+ "April","May","June","July","August","September",
+ "October","November","December")
+var now = new Date(); 
+var datetime = montharray[now.getMonth()] + '&nbsp;' + now.getDate() + ', ' + now.getFullYear(); 
+datetime += ' '+now.getHours()+':'+now.getMinutes()+':'+now.getSeconds(); 
+</script>
+<title>Completion Status Summary Prototype</title>
+</head>
+
+<body id="grad3">
+<form id="form1" name="form1" method="post" action="">
+<table width="95%" align="center" border="1" cellspacing="0" cellpadding="5" bordercolor="#DDDDDD">
+	<tr>
+		<td align="center"><table width="95%" border="0" cellspacing="1" cellpadding="2">
+			<tr>
+				<td><span class="title1"><span class="title1_not_bold">Segment Repair Process</span></span></td>
+				<td colspan="2" align="left"><span class="modeind"><span class="title1_not_bold"><span class="title1">Completion Status Summary for Type 1 Segments </span></span></span></td>
+				</tr>
+			<tr>
+				<td align="right" class="modeind">&nbsp;</td>
+				<td align="left"><span class="modeind">
+				Report Generated: <script>document.write(datetime)</script></span></td>
+				<td align="right"><span class="modeind">Change segment group: </span>
+					<select name="seg" id="seg">
+						<option selected="selected">Type 1</option>
+						<option>Type 1</option>
+						<option>2-09</option>
+						<option>3-50</option>
+						<option>4-23</option>
+						<option>5-69</option>
+						</select></td>
+			</tr>
+		</table></td>
+	</tr>
+	<tr>
+		<td align="center"><br />
+			<table width="95%" border="1" cellspacing="0" cellpadding="5" bordercolor="#DDDDDD">
+				<tr>
+					<td><table width="95%" border="0" cellspacing="1" cellpadding="2">
+						<tr class="table_heading">
+							<td nowrap="nowrap">Proc #</td>
+							<td nowrap="nowrap">Title</td>
+							<td align="center" nowrap="nowrap">1-04</td>
+							<td align="center" nowrap="nowrap">1-05</td>
+							<td align="center" nowrap="nowrap">1-06</td>
+							<td align="center" nowrap="nowrap">1-46</td>
+							<td align="center" nowrap="nowrap">1-49</td>
+							<td align="center" nowrap="nowrap">1-51</td>
+							<td align="center" nowrap="nowrap">1-55</td>
+							<td align="center" nowrap="nowrap">1-57</td>
+							<td align="center" nowrap="nowrap">1-60</td>
+							<td align="center" nowrap="nowrap">1-63</td>
+							</tr>
+						<tr>
+							<td colspan="12" class="table_cell"><hr /></td>
+							</tr>
+						
+						<!--%%status_rows%%-->
+						</table></td>
+					</tr>
+				</table>
+			<br /></td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

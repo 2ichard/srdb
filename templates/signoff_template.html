@@ -1,0 +1,128 @@
+
+<!-- signoff template -->
+<p></p>
+
+<table width="90%" cellpadding="0" cellspacing="0" 
+ng-init="setSignOffDesc('%%proc%%', '%%ver%%', '%%sec%%', '%%step%%', '%%type%%', '%%label%%', '%%valType%%', '%%minVal%%', '%%maxVal%%')">
+<tr><td>
+
+	<table width="100%" border="0" align="center" cellpadding="2" cellspacing="0" bgcolor="#CCFFCC"> 
+		<tr align="center" valign="top">
+			<td>
+				<table border="0" cellspacing="2" cellpadding="2">
+					<tr>
+						<td nowrap="nowrap" class="section_title">%%title%%</td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<table border="0" cellspacing="2" cellpadding="2">
+					<tr ng-hide="isBatchProc">
+						<td>Segment:</td>
+						<td nowrap="nowrap" class="section_title">{{seg}}</td>
+					</tr>
+					<tr ng-show="isBatchProc">
+						<td nowrap="nowrap">Lot #:</td>
+						<td nowrap="nowrap" class="section_title">{{lotNum}}</td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<table border="0" cellspacing="2" cellpadding="2">
+					<tr>
+						<td align="right">Procedure:</td>
+						<td class="figure_caption">%%proc%%</td>
+						<td align="right">&nbsp;</td>
+						<td align="right">Version:</td>
+						<td align="left" class="figure_caption">%%ver%%</td>
+						<td align="left">&nbsp;</td>
+						<td align="left">Section:</td>
+						<td align="left" class="figure_caption">%%sec%%</td>
+						<td align="left">&nbsp;</td>
+						<td ng-hide="signOffData[%%sec%%][%%step%%].signedoff == 0" align="left">Step:</td>
+						<td ng-hide="signOffData[%%sec%%][%%step%%].signedoff == 0" align="left" 
+								class="figure_caption">%%step%%</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</td></tr>
+
+<tr><td>
+
+	<table ng-hide="signOffData[%%sec%%][%%step%%].signedoff" 
+		width="100%" border="0" align="center" cellpadding="2" cellspacing="0" bgcolor="#FFCCCC">
+		<tr align="center" valign="top">
+			<td>
+				<table border="0" cellspacing="2" cellpadding="2">
+					<tr>
+						<td nowrap="nowrap">Not  signed off yet.</td>
+					</tr>
+				</table>
+			</td>
+			<td>&nbsp;</td>
+			<td align="right" width="80%">
+				<table width="100%" border="1" cellspacing="0" cellpadding="2" bordercolor="#BBBBBB">
+					<tr>
+						
+						<td nowrap align="center">%%label%%: 
+							
+							<select ng-show="%%has_menu%%" ng-model="valueInput[%%sec%%][%%step%%]" ng-change="techChanged()" 
+								ng-options="v for v in [%%choices%%]"></select>
+								
+							<input  ng-hide="%%has_menu%%" type="text" ng-model="valueInput[%%sec%%][%%step%%]" 
+								name="valueTextField" id="valueTextField" />
+						</td>
+						
+						<td nowrap align="center">Tech:
+						<select ng-model="tech" ng-change="techChanged()" ng-options="t for t in techNames"></select>
+						</td>
+						
+						<td nowrap align="center">Notes:
+						<input type="text" ng-model="notesInput[%%sec%%][%%step%%]" name="textfield" id="textfield" />
+						</td>
+						<td nowrap align="left">
+						<button ng-click="signoffAction(%%sec%%, %%step%%)">Sign-Off</button></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	
+</td></tr>	
+	
+<tr><td>
+	
+	<table ng-show="signOffData[%%sec%%][%%step%%].signedoff" 
+		width="100%" border="0" align="center" cellpadding="2" cellspacing="0" bgcolor="#CCFFCC">
+		<tr align="center" valign="top">
+			<td width="20px">&nbsp;</td>
+			
+			
+			<td align="left">
+				<table width="100%" border="1" cellspacing="0" bordercolor="#BBBBBB" cellpadding="2">
+					<tr>
+						<td align="center" nowrap="nowrap">
+							Signed-off by {{signOffData[%%sec%%][%%step%%].tech}} at {{signOffData[%%sec%%][%%step%%].timestamp}}</td>
+			<!--
+					</tr>
+				</table>
+			</td>
+			
+			
+			<td align="right">
+				<table border="1" bordercolor="#BBBBBB" cellspacing="0" cellspacing="2" cellpadding="2" align="right">
+					<tr>
+			-->
+						<td nowrap align="center">{{signOffDesc[%%sec%%][%%step%%].label}}: {{signOffData[%%sec%%][%%step%%].value}}</td>
+						<td align="left" valign="top">Notes: {{signOffData[%%sec%%][%%step%%].notes}}</td>
+					</tr>
+				</table>
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+	
+</td></tr></table> <!-- end of outer table -->
+	

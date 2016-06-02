@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="../css/srdb.css" />
+<title>%%step_name%%</title>
+<script src="../js/util.js"></script>
+<script src="../js/segSelect.js"></script>
+<script src="../js/techSelect.js"></script>
+<script src="../js/stationSelect.js"></script>
+<script type="text/javascript">
+
+function doOnLoad() {
+	selectCurrentSeg();
+	selectCurrentTech();
+	selectCurrentStation();
+}
+
+function logCompletion() {	
+	var seg = document.getElementById("seg").options[document.getElementById("seg").selectedIndex].text;
+	var tech = document.getElementById("tech").options[document.getElementById("tech").selectedIndex].text;
+	var station = document.getElementById("station").options[document.getElementById("station").selectedIndex].text;
+	var notes = document.getElementById("notes").value;
+	var url = new String("../lib/SRDb.php?cmnd=log_completion&s_id=%%step_id%%&seg=" + seg + "&tech=" + tech +
+		"&station=" + station + "&notes=" + notes);	
+	send_req(url, "log_completion_status");
+}
+
+</script>
+</head>
+
+<body id=%%body_id%% onLoad="doOnLoad()">
+<table width="600" border="0" align="center" cellpadding="2" cellspacing="1">
+  <tr>
+    <td align="left"><table width="100%" border="0" cellspacing="1" cellpadding="2">
+        <tr>
+          <td colspan="2" align="left"><table border="0" cellspacing="1" cellpadding="2">
+            <tr>
+              <td colspan="2" align="left" scope="col"><span class="title2"><strong>%%seq%%</strong></span></td>
+              </tr>
+            <tr>
+            	<td align="right" nowrap="nowrap"><span class="title2">Procedure</span>:</td>
+            	<td align="left" class="title2">%%proc%%</td>
+            	</tr>
+            <tr>
+              <td align="right" nowrap="nowrap"><span class="title2">Prev step: </span></td>
+              <td align="left"><span class="title2">%%prev%%</span></td>
+              </tr>
+            <tr>
+              <td align="right"><span class="title2">Next step: </span></td>
+              <td align="left"><span class="title2">%%next%%</span></td>
+              </tr>
+          </table></td>
+        </tr>
+        <tr>
+          <td valign="bottom"><span class="title1">%%step_name%%</span></td>
+          
+		  <!-- mode switch -->
+		  <td align="right" class="modeind">%%mode%% Mode (<a href="javascript:document.cookie='srdb_mode=%%switch_mode%%';location.reload()">switch</a>)</td>
+        </tr>
+      </table>
+      <hr />
+    
+    
+    
+    
+    <div id="step_sec">
+    <form action="" method="get" name="seg_select">
+%%instructions%%
+</form>
+
+      <hr />
+    </div>
+    
+    <div id="log_sec" style="visibility: %%log_sec_visible%%; display: %%log_sec_display%%">    
+    <form id="form2" name="form2" method="post" action="">
+    	<table border="0" cellspacing="1" cellpadding="2">
+    		<tr>
+    			<td>Segment:
+    				</td>
+    			<td><script>writeSegSelect()</script></td>
+    			<td rowspan="5" valign="top"><textarea name="notes" id="notes" cols="45" rows="5"></textarea>
+    				<br /><font id="log_completion_status">&nbsp;</font></td>
+    			<td><input type="submit" name="log" id="log" value="Log Completion" onClick="logCompletion()"/></td>
+    			<td>&nbsp;</td>
+    			</tr>
+    		<tr>
+    			<td>Tech: </td>
+    			<td><script>writeTechSelect()</script></td>
+    			<td><input type="submit" name="button" id="button" value="Add LT dataset..." /></td>
+    			<td>&nbsp;</td>
+    			</tr>
+    		<tr>
+    			<td>Station</td>
+    			<td><script>writeStationSelect()</script></td>
+    			<td><input type="submit" name="button2" id="button2" value="Add file..." /></td>
+    			<td>&nbsp;</td>
+    			</tr>
+    		<tr>
+    			<td>&nbsp;</td>
+    			<td>&nbsp;</td>
+    			<td>&nbsp;</td>
+    			<td>&nbsp;</td>
+    			</tr>
+    		<tr>
+    			<td>&nbsp;</td>
+    			<td>&nbsp;</td>
+    			<td>&nbsp;</td>
+    			<td>&nbsp;</td>
+    			</tr>
+    		</table>
+    </form>
+    </div>
+    
+<div id="hist_sec" style="visibility: %%hist_sec_visible%%; display: %%hist_sec_display%%">    
+<p>Previous exections of this step:
+</p>
+%%actions_table%%    
+</div>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+</body>
+</html>

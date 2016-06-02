@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="srdbLaunchApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="../css/srdb.css" />
+<script src="../script/util.js"></script>
+<script src="../script/angular.js"></script>
+<script src="../script/angular-cookies.js"></script>
+<script src="../script/launchController.js"></script>
+<script>
+
+function loadProcedure(num, type) {
+	window.location.href = "ProcedurePage.php?num=" + num + "&type=" + type + 
+		"&content=" + getCookie("content");
+}
+</script>
+<title>%%title%%</title>
+</head>
+
+<body id="grad3" ng-app="srdbLaunchApp">
+<form id="form1" name="form1" method="post" action="">
+
+<table width="95%" align="center" border="1" cellspacing="0" cellpadding="5" bordercolor="#DDDDDD" ng-controller="LaunchCtrl">
+	<tr>
+		<td align="center">
+
+	<table width="95%" border="0" cellspacing="1" cellpadding="2">
+	<tr >
+		<td><span class="title1"><span class="title1_not_bold"> Segment Repair Process</span></span></td>
+		<td align="right" nowrap="nowrap">
+		<span class="title1_not_bold"><span class="title1_italic">
+		Type {{segType}} &nbsp; S/N {{seg}}</span></span></td>
+					
+		<td align="right" class="title1">
+			<span class="title1_not_bold"> Tech:</span> 
+			<span class="title1_italic">{{tech}}</span></td>
+	</tr>
+	<tr>
+		<td align="left" class="modeind">Last activity on this segment: {{lastActivity}}</td>
+		<td align="right">
+			<span class="modeind">
+			Change type:
+			<!--
+			<select ng-model="segType" ng-change="typeChanged()" 
+			ng-options="t for t in segTypes"></select>
+			-->
+			
+			<select ng-model="segType" ng-change="typeChanged()" 
+			ng-options="t for t in ['1', '2', '3', '4', '5', '6']"></select>
+				
+			S/N: </span>
+			<!--
+			<select ng-model="segSn" ng-change="snChanged()" 
+				ng-options="s.sn for s in segs | filter : {type : segType }"></select></td>
+			-->
+			<select ng-model="seg" ng-change="snChanged()" 
+				ng-options="s for s in sns"></select></td>
+				
+		<td align="right"><span class="modeind">Tech: </span>
+			<select ng-model="tech" ng-change="techChanged()" ng-options="t for t in techNames"></select></td>
+	</tr>	
+	</table>
+	</td>
+</tr>
+	
+<tr>
+	<td align="center">
+	
+	<table cellpadding="4"><tr>
+		<td>Search: <input ng-model="query" /></td>
+		
+		<td>Matches: {{(procedures | filter:query).length}}</td>
+		
+		<td>Sort by: 
+			<select ng-model="orderProp">
+				<option value="num">Procedure Number</option>
+				<option value="order">Order</option>
+				<option value="title">Title</option>
+				<option value="started">Start Time</option>
+				<option value="completed">Complete Time</option>
+			</select></td>
+			</tr></table>
+			
+			
+			
+		
+		<table width="95%" border="1" cellspacing="0" cellpadding="5" bordercolor="#DDDDDD">
+		<tr>
+			<td><table width="95%" border="0" cellspacing="1" cellpadding="2">
+				<tr class="table_heading">
+					<td align="center" ng-click="(orderProp='num')">Proc #</td>
+					<td align="center" ng-click="(orderProp='order')">Order</td>
+					<td ng-click="(orderProp='title')">Title</td>
+					<td align="center" ng-click="(orderProp='started')">Started</td>
+					<td align="center" ng-click="(orderProp='completed')">Completed</td>
+				</tr>
+				<tr>
+					<td colspan="5" class="table_cell"><hr /></td>
+					</tr>
+				<tr ng-repeat="procedure in procedures | filter:query | orderBy:orderProp">
+				
+					<!-- procedure number -->
+					<td align="center">
+						<a href="javascript:openProcedure('Segment', '{{procedure.num}}')">{{procedure.num}}</a></td>
+					
+					<!-- order -->
+					<td align="center">{{procedure.order}}</td>
+					
+					<!-- title -->
+					<td><a href="javascript:openProcedure('Segment', '{{procedure.num}}')">{{procedure.title}}</a></td>
+					
+					<!-- started -->
+					<td align="center">{{procedure.started}}</td>
+					
+					<!-- completed -->
+					<td align="center">{{procedure.completed}}</td>
+				</tr>
+				
+			</table></td>
+		</tr>
+	</table>			
+	<br /></td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

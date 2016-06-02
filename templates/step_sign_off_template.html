@@ -1,0 +1,49 @@
+<!-- step sign-off template -->
+<br /><br />
+<table width="95%" border="0" align="center" cellpadding="2" cellspacing="1" bgcolor="#EEEEEE">
+	<tr>
+		<td><table border="0" align="center" cellpadding="1" cellspacing="2">
+			<tr>
+				
+				<td align="center" nowrap="nowrap" class="signoff_text"> Segment <span id="%%id%%Seg">unknown</span></td>
+			</tr>
+			
+			<tr>
+				<td align="center" nowrap="nowrap" class="signoff_text"> Procedure %%proc%% Section %%sec%% Step %%step%%</td>
+				
+				
+				<script>
+				document.getElementById("%%id%%Seg").innerHTML=getCookie("seg");
+				window.setInterval(function() {
+					document.getElementById("%%id%%Seg").innerHTML=getCookie("seg"); }, 1000);
+				</script>
+			
+			
+			</tr>
+			<tr>
+				<td><div id="%%id%%SignOff">
+					<table border="0" align="center" cellpadding="2" cellspacing="1" bgcolor="#EEEEEE">
+						<tr>
+							<td><script>
+						writeTechSelect("%%id%%");
+						</script></td>
+							<td><input type="button" name="signOffButton" 
+						id="%%id%%SignOffButton" value="Sign-off" 
+						onclick="signOffOnStep('%%proc%%', %%sec%%, %%step%%, '%%id%%')" /></td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center" class="signoff_text">not signed-off yet</td>
+						</tr>
+					</table>
+				</div>
+					<div id="%%id%%SignedOff"> Signed-off by <span id="%%id%%Who">unknown person</span> on <span id="%%id%%Time">unknown date</span>. </div>
+					<script>
+			updateSignOffState("%%proc%%", %%sec%%, %%step%%, "%%id%%");
+			window.setInterval(function() { 
+				updateSignOffState("%%proc%%", %%sec%%, %%step%%, "%%id%%"); }, 1000);
+			</script></td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+<!-- end step sign-off template -->

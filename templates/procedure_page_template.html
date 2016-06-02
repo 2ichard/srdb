@@ -1,0 +1,229 @@
+<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="ng-app" ng-app="srdbProcedureApp">
+-->
+<!DOCTYPE html>
+<html id="ng-app" ng-app="srdbProcedureApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="../css/srdb_large.css" data-title="large"/>
+<link rel="alternate stylesheet" type="text/css" href="../css/srdb.css" data-title="normal"/>
+<style>
+#navigation {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	text-align: center;
+	padding-top: 5px;
+	padding-left: 0px;
+	-webkit-box-shadow: 0px 0px 8px 0px #000000;
+	-moz-box-shadow: 0px 0px 8px 0px #000000;
+	box-shadow: 0px 0px 8px 0px #000000;
+	background-color: goldenrod;
+	background: linear-gradient(white, goldenrod);
+	opacity: 0.95;
+	z-index: 999;
+}
+#navigation a {
+	font-size: 14px;
+	padding-left: 15px;
+	padding-right: 15px;
+	color: white;
+	text-decoration: none;
+}
+#navigation a:hover {
+color: grey;
+} 
+body {
+	padding: 0;
+	margin: 0;
+}
+</style>
+<script src="../script/util.js"></script>
+<script src="../script/angular.js"></script>
+<script src="../script/angular-cookies.js"></script>
+<script src="../script/procedureController.js"></script>
+
+<script>
+var n_sections = 0;
+var n_steps = Array();
+
+function updateContentLocation() {
+	if (getCookie("content").length < 1)
+		return;
+	var imageElements = document.images;
+	for (var i = 0; i < imageElements.length; i++) 
+		imageElements[i].src = 
+			imageElements[i].src.replace("content/images", getCookie("content") + "/images");
+	var linkElements = document.links;
+	for (var i = 0; i < linkElements.length; i++) 
+		linkElements[i].href = 
+			linkElements[i].href.replace("content/images", getCookie("content") + "/images");
+}
+
+function doOnLoad() {
+	updateContentLocation();
+	switch(getCookie("css_data_title")) {
+        case "large":
+            styleSet("large");
+            break;
+        default:
+            setCookie("css_data_title", "normal");
+            styleSet("normal");
+    }
+	enableAltMode(false);
+}
+
+function setAllCollapsed(collapsed) {
+	for (sec = 1; sec <= n_sections; sec++)
+		for (step = 1; step <= n_steps[sec]; step++) {
+			v = 'collapsable_' + sec + '_' + step;
+			if (eval(v + "!== 'undefined'"))
+				if (eval(v + " == true")) {
+					n = 'setCollapsed_' + sec + '_' + step;
+					eval(n + "(" + collapsed + ")");
+				}
+		}
+}
+
+function enableAltMode(enable) {
+	if (enable) {
+		document.getElementById("navigation").style.display = "none";
+		document.getElementById("header_spacer").style.display = "none";
+		document.getElementById("alt_header").style.display = "block";
+		document.body.id = "";
+	}
+	else {
+		document.getElementById("navigation").style.display = "block";
+		document.getElementById("header_spacer").style.display = "block";
+		document.getElementById("alt_header").style.display = "none";
+		document.body.id = "grad3";
+	}
+}
+</script>
+<title>%%title%%</title>
+</head>
+
+<body id="grad3" onLoad="doOnLoad()" ng-controller="ProcedureController" ng-init="doOnLoad()">
+
+<form id="form1" name="form1" method="post" action="">
+
+<div id="navigation">
+
+<table width="95%" align="center" border="0" cellspacing="0" cellpadding="5" bordercolor="#DDDDDD">
+	<tr><td align="center">
+	
+	<table width="95%" border="0" cellspacing="4" cellpadding="0"><tr><td>
+
+	<table width="100%" cellspacing="0" cellpadding="0">
+	<tr>
+	<td nowrap><span class="title1_not_bold">Segment Repair Procedure</span></td>
+	<td width="50">&nbsp;</td>
+	<td align="right" nowrap>
+		<span class="title1_not_bold">Segment </span>
+		<span class="title1_italic">Type {{segType}} S/N</span>
+		<span class="title1_not_bold"> <span class="title1_italic">{{seg}}</span></span>
+		<span class="title1_not_bold">&nbsp;&nbsp;&nbsp;Tech:</span> 
+		<span class="title1_italic">{{tech}}</span></td>
+	</tr>
+	</table>
+	</td></tr>
+	
+	<tr><td>
+	<table width="100%" cellspacing="0" cellpadding="0" border="0">
+	<tr>
+	<td colspan="2"nowrap>
+		<span class="title1">%%title%%</span>
+		<span class="title2">Version %%version%%</span></td>
+	<td align="right">
+		Set tech: <select ng-model="tech" ng-change="techChanged()" ng-options="t for t in techNames"></select></td>
+	</tr>
+	</table>
+	</td></tr>
+	</table>
+	</td></tr>
+	</table>
+	
+	<table align="center" cellpadding="1" cellspacing="0" border="0">
+	<tr><td align="center">
+	<a class="collapselink" style="padding: 0px 0px;" 
+		href="javascript:setAllCollapsed(false)"
+		onmouseover="this.style.backgroundColor='yellow';" onmouseout="this.style.backgroundColor='';">
+		Expand&nbsp;All&nbsp;Substeps</a>&nbsp;&nbsp;&nbsp;
+	<a class="collapselink" style="padding: 0px 0px;" 
+		href="javascript:setAllCollapsed(true)"
+		onmouseover="this.style.backgroundColor='yellow';" onmouseout="this.style.backgroundColor='';">
+		Collapse&nbsp;All&nbsp;Substeps</a>&nbsp;&nbsp;&nbsp;
+	<a class="collapselink" style="padding: 0px 0px;" href="#toc"
+		onmouseover="this.style.backgroundColor='yellow';" onmouseout="this.style.backgroundColor='';">
+		Jump&nbsp;to&nbsp;Top</a>&nbsp;&nbsp;&nbsp;
+	<a class="collapselink" style="padding: 0px 0px;" href="#notes"
+		onmouseover="this.style.backgroundColor='yellow';" onmouseout="this.style.backgroundColor='';">
+		Jump&nbsp;to&nbsp;Notes</a>&nbsp;&nbsp;&nbsp;
+	<a class="collapselink" style="padding: 0px 0px;" ng-href="" ng-click="changeStyle('normal')"
+		onmouseover="this.style.backgroundColor='yellow';" onmouseout="this.style.backgroundColor='';">
+		Small&nbsp;Fonts</a>&nbsp;&nbsp;&nbsp;
+	<a class="collapselink" style="padding: 0px 0px;" ng-href="" ng-click="changeStyle('large')"
+		onmouseover="this.style.backgroundColor='yellow';" onmouseout="this.style.backgroundColor='';">
+		Large&nbsp;Fonts</a>&nbsp;&nbsp;&nbsp;
+	<a class="collapselink" style="padding: 0px 0px;" href="javascript:enableAltMode(true)"
+		onmouseover="this.style.backgroundColor='yellow';" onmouseout="this.style.backgroundColor='';">
+		Enable&nbsp;Alt</a>&nbsp;&nbsp;&nbsp;
+	<a class="collapselink" style="padding: 0px 0px;" target="_blank" 
+		href="https://www.keck.hawaii.edu/optics/segrepair/db/pages/ncr.php"
+		onmouseover="this.style.backgroundColor='yellow';" onmouseout="this.style.backgroundColor='';">
+		NCR</a>
+	</td></tr></table>
+	
+	</div>
+	
+	<div id="alt_header">
+	<table width="95%" align="center" border="0" cellspacing="0" cellpadding="5" bordercolor="#DDDDDD">
+	<tr><td align="center">
+	
+	<table width="95%" border="0" cellspacing="4" cellpadding="0"><tr><td>
+
+	<table width="100%" cellspacing="0" cellpadding="0">
+	<tr>
+	<td nowrap><span class="title1_not_bold">Segment Repair Procedure</span></td>
+	<td width="50">&nbsp;</td>
+	<td align="right" nowrap>&nbsp;</td>
+	</tr>
+	</table>
+	</td></tr>
+	
+	<tr><td>
+	<table width="100%" cellspacing="0" cellpadding="0" border="0">
+	<tr>
+	<td colspan="2"nowrap>
+		<span class="title1">%%title%%</span>
+		<span class="title2">Version %%version%%</span></td>
+	<td align="right">
+		<a class="collapselink" ng-href="" ng-click="changeStyle('normal')">Small Fonts</a>&nbsp;&nbsp;
+		<a class="collapselink" ng-href="" ng-click="changeStyle('large')">Large Fonts</a>&nbsp;&nbsp;
+		<a class="collapselink" href="javascript:enableAltMode(false)">Disable Alt</a></td>
+	</tr>
+	</table>
+	</td></tr>
+	</table>
+	</td></tr>
+	</table>
+	
+	</div>
+	
+	<div id="header_spacer">
+	<table height="110px"><tr><td>&nbsp;</td></tr></table>
+	</div>
+	
+	<table width="95%" align="center" border="0" cellspacing="0" cellpadding="5" bordercolor="#DDDDDD">
+
+	<tr>
+		<td align="center">
+			<table border="0" cellspacing="1" cellpadding="2">
+			<tr><td align="left">%%content%%</td></tr></table>
+			</td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

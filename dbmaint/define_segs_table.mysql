@@ -1,0 +1,6 @@
+create table segs (
+	id mediumint KEY AUTO_INCREMENT,
+	sn mediumint NOT NULL,
+	type mediumint NOT NULL,
+	status varchar(80)
+	);

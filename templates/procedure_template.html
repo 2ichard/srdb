@@ -1,0 +1,55 @@
+
+<!-- procedure template -->
+%%table_of_contents%%
+%%sign_off_summary%%<br />
+%%non_conformance_records%%<br />
+<hr />
+<p>%%general_procedures%%<br />
+	%%intro%%
+	%%sections%%
+%%completion_log%% </p>
+<hr />
+<span class="section_title"><a name="notes" id="notes"></a>Notes</span>&nbsp;
+	
+	<a class="collapselink" ng-hide="showNewNoteArea" ng-href="#here" ng-click="newNote()">
+	Add New Note</a>
+<table width="85%" border="0" cellpadding="2" cellspacing="1">
+
+	<tr ng-show="showNewNoteArea">
+		<td align="center">
+			<table width="95%" border="0">
+			<tr>
+				<td align="right" valign="top"><button ng-click="save()">Save</button>
+					<button ng-click="cancel()">Cancel</button></td>
+				<td align="left">
+					<textarea name="textarea" ng-change="noteTextChanged()" 
+					cols="60" rows="4" ng-model="newNoteText"></textarea></td>
+			</tr>
+			<tr><td>&nbsp;</td><td class="kindoftiny" align="right">{{newNoteText.length}}/{{maxNoteLength}}</td></tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2"align="center">
+		
+			<!-- Notes -->
+			<table width="90%" align="center">
+				<tr ng-repeat="note in notes | filter:query">
+					<td align="left"><table width="90%" border="0">
+						<tr>
+							<td colspan="2" align="left" nowrap="nowrap"><span class="figure_caption">
+							{{note.tech}}</span> at <span class="figure_caption">{{note.timestamp}}:</span></td>
+						</tr>
+						<tr>
+							<td width="50px">&nbsp;</td>
+							<td><div ng-bind-html="note.note | unsafe"></div></td>
+						</tr>
+					</table></td>
+				</tr>
+			</table>
+	
+			<!-- end of notes --></td>
+	</tr>
+</table>
+
+<!-- end procedure template -->

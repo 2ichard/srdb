@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="srdbBatchLaunchApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="../css/srdb.css" />
+<script src="../script/util.js"></script>
+<script src="../script/angular.js"></script>
+<script src="../script/angular-cookies.js"></script>
+<script src="../script/batchLaunchController.js"></script>
+<script>
+
+function loadProcedure(num, type) {
+	window.location.href = "ProcedurePage.php?num=" + num + "&type=" + type + 
+		"&content=" + getCookie("content");
+}
+</script>
+<title>%%title%%</title>
+</head>
+
+<body id="grad3">
+<form id="form1" name="form1" method="post" action="">
+
+<table width="95%" align="center" border="1" cellspacing="0" cellpadding="5" bordercolor="#DDDDDD" 
+	ng-controller="BatchLaunchCtrl">
+	
+	<tr>
+	<td align="center">
+		<table width="95%" border="0" cellspacing="1" cellpadding="2">
+			<tr>
+				<td><span class="title1"><span class="title1_not_bold">
+					Segment Repair - Batch Procedure Launch Page</span></span></td>
+				<td align="right" nowrap="nowrap">&nbsp;</td>
+					
+				<td align="right" class="title1">
+					<span class="title1_not_bold"> Tech:</span> 
+					<span class="title1_italic">{{tech}}</span></td>
+			</tr>
+			<tr>
+				<td align="left" class="modeind">&nbsp;</td>
+				<td align="right">&nbsp;</td>
+				<td align="right"><span class="modeind">Tech: </span>
+					<select ng-model="tech" ng-change="techChanged()" ng-options="t for t in techNames"></select></td>
+			</tr>	
+		</table>
+	</td>
+	</tr>
+	
+	<tr>
+		<td align="center">
+		<br />
+		<table width="65%" border="0" cellspacing="0" cellpadding="8" bgcolor="#EEEEEE">
+			<tr>
+				<td><p>Instructions: </p>
+					<ul>
+						<li>To open a procedure for a batch/lot which has already been started, select the batch/lot number from the drop-down menu and click <span class="table_cell">Open Procedure on Selected Batch</span>.<br />
+							<br />
+						</li>
+						<li>To start a new batch/lot, click <span class="table_cell">Create New Batch</span>. The procedure will open automatically and the new batch will be selected.</li>
+					</ul></td>
+			</tr>
+		</table>
+		<br />
+		<table cellpadding="4">
+			<tr>
+			<td>Search: <input ng-model="query" /></td>
+			
+			<td>Matches: {{(procedures | filter:query).length}}</td>
+			
+			<td>Sort by: 
+				<select ng-model="orderProp">
+					<option value="num">Procedure Number</option>
+					<option value="order">Order</option>
+					<option value="title">Title</option>
+				</select></td>
+			</tr></table>
+			
+			<table width="95%" border="1" cellspacing="0" cellpadding="5" bordercolor="#DDDDDD">
+			<tr>
+				<td><table width="95%" align="center" border="0" cellspacing="1" cellpadding="2">
+					<tr class="table_heading">
+						<td ng-click="(orderProp='num')">Proc #</td>
+						<td ng-click="(orderProp='title')">Title</td>
+						<td align="center">Batch</td>
+						<td>&nbsp;</td>
+						</tr>
+					<tr>
+						<td colspan="6" class="table_cell"><hr /></td>
+						</tr>
+						
+					<tr ng-repeat="proc in procs | filter:query | orderBy:orderProp">
+						<td><a ng-href="#here" ng-click="openProcedure(proc.num)">{{proc.num}}</a></td>
+						<td><a ng-href="#here" ng-click="openProcedure(proc.num)">{{proc.title}}</a></td>
+						<td align="center">
+							<select ng-model="selectedLot[proc.num]" 
+								ng-options="lot for lot in existingLots[proc.num]"></select></td>
+						<td><button ng-click="openProcedure(proc.num)">Open Procedure on Selected Batch</button>
+						<button ng-click="createNew(proc.num)">Create New Batch</button></td>
+					</tr>
+					
+				</table></td>
+			</tr>
+		</table>			
+		<br /></td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="srdbProcedureApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="../script/util.js"></script>
+<script src="../script/angular.js"></script>
+<script src="../script/angular-cookies.js"></script>
+<script src="../script/procedureController.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../css/srdb.css" />
+<title>%%title%%</title>
+</head>
+
+<body id="grad3" ng-controller="ProcedureController" ng-init="proc='SRP999'">
+<form id="form1" name="form1" method="post" action="">
+<table width="95%" align="center" border="1" cellspacing="0" cellpadding="5" bordercolor="#DDDDDD">
+	<tr>
+		<td align="center">
+		<table width="95%" border="0" cellspacing="2" cellpadding="2">
+			<tr>
+				<td><table border="0" cellspacing="2" cellpadding="2">
+					<tr>
+						<td><span class="title1"><span class="title1_not_bold">
+						<a href="http://www.keck.hawaii.edu/optics/segrepair/dev/db/index.html">Segment Repair</a> %%type%%</span></span></td>
+					</tr>
+					<tr>
+						<td><span class="modeind"><span class="title1">%%title%%</span></span></td>
+					</tr>
+				</table></td>
+				<td align="right">
+				
+				
+				<table border="0" cellspacing="2" cellpadding="2">
+					<tr>
+						<td align="right" class="title1_not_bold"><span class="title1_not_bold">
+					Segment: <span class="title1_italic">{{seg}}</span></span></td>
+						<td align="right" class="title1">&nbsp;</td>
+						<td align="right" class="title1">
+					<span class="title1_not_bold"> Tech:</span> 
+					<span class="title1_italic">{{tech}}</span></td>
+					</tr>
+					<tr>
+						<td align="center"><select ng-model="seg" ng-change="segChanged()" ng-options="s for s in segs">
+						</select></td>
+						<td align="center">&nbsp;</td>
+						<td align="center"><select ng-model="tech" ng-change="techChanged()" ng-options="t for t in techNames">
+						</select></td>
+					</tr>
+				</table>
+				
+				
+				
+				</td>
+			</tr>
+		</table></td>
+	</tr>
+	<tr>
+		<td align="center">
+			<table width="95%" border="0" cellspacing="1" cellpadding="2">
+			<tr><td align="left"><p>%%content%%</p>
+					<table border="0" align="center" cellpadding="2" cellspacing="2">
+						<tr>
+							<td><select name="select" ng-model="seg" ng-change="segChanged()" ng-options="s for s in segs">
+							</select></td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="3">proc={{proc}}</td>
+						</tr>
+						<tr>
+							<td colspan="3">signoffs={{signoffs}}</td>
+							</tr>
+						<tr>
+							<td colspan="3">signedoff={{signedoff}}</td>
+						</tr>
+						<tr>
+							<td colspan="3">signedoff[2][1]={{signedoff[2][1]}}</td>
+							</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>
+					</table>
+					</td></tr></table>
+			</td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

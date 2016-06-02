@@ -1,0 +1,15 @@
+create table segment_status (
+	id MEDIUMINT KEY AUTO_INCREMENT,
+	sn VARCHAR(8) NOT NULL,
+	t DATETIME,
+	t_entry TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+	location VARCHAR(16) NOT NULL,
+	next_location VARCHAR(16),
+	ready BOOLEAN DEFAULT 0,
+	repaired BOOLEAN DEFAULT 0,
+	damage_level TINYINT UNSIGNED DEFAULT 0,
+	exchangable BOOLEAN DEFAULT 0,
+	waiting BOOLEAN DEFAULT 0,
+	repairing BOOLEAN DEFAULT 0
+);
+	 

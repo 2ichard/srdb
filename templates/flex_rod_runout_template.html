@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="../script/util.js"></script>
+<script src="../script/angular.js"></script>
+<script src="../script/angular-cookies.js"></script>
+<script src="../script/flexRodRunoutController.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../css/srdb.css" />
+<title>Flex Rod Runout</title>
+</head>
+
+<body id="deeppinkgrad" ng-app="srdbFlexRodRunoutApp">
+<form id="form1" name="form1" method="post" action="">
+<table width="95%" align="center" border="1" cellspacing="0" cellpadding="5" bordercolor="#DDDDDD" 
+		ng-controller="FlexRodRunoutCtrl"  ng-init="lot='%%lot%%'">
+	<tr>
+		<td align="center"><table width="95%" border="0" cellspacing="2" cellpadding="2">
+			<tr>
+				<td nowrap="nowrap"><table border="0" cellspacing="2" cellpadding="2">
+					<tr>
+						<td nowrap="nowrap" colspan="2"><span class="title1_not_bold"> 
+						 <a href="../index.html"> Segment Repair Database</a></span></td>
+					</tr>
+					<tr>
+						<td nowrap="nowrap"><span class="modeind"><span class="title1">
+						Flex Rod Runout</span></span></td>
+						<td valign="middle" nowrap="nowrap" class="title2">&nbsp;</td>
+					</tr>
+				</table></td>
+				<td nowrap="nowrap" align="right"><table border="0" cellspacing="2" cellpadding="2">
+					<tr>
+						<td align="right" nowrap="nowrap">
+							<span class="title1_not_bold">Lot Number</span>
+							<span class="title1_italic">{{lotNum}}</span></td>
+						
+						<td align="right" class="title1">&nbsp;</td>
+						</tr>
+					<tr>
+						<td align="right" nowrap="nowrap" class="title1_not_bold">&nbsp;</td>
+						<td width="50" align="center">&nbsp;</td>
+						</tr>
+				</table></td>
+			</tr>
+		</table></td>
+	</tr>
+	<tr>
+		<td align="center">
+		
+<!-- -->
+		
+<br />
+						
+<table>
+	<tr>
+		<td ng-repeat="color in colors">
+			<table cellpadding="2" cellspacing="0" border="1" bordercolor="#BBBBBB">
+				<tr>
+					<td colspan="4" align="center"><strong>{{color | uppercase}} Whiffletree</strong></td>
+				
+				</tr>
+				<tr>
+					<td align="center" valign="bottom">Flex Rod<br />
+						Designation</td>
+					<td align="center" valign="bottom" nowrap="nowrap">Runout<br />
+						<span class="kindoftiny">Rqt: {{runoutRange.max | number : 3}}&#8220; max</span></td>
+					<td align="center" valign="bottom">Timestamp</td>
+					<td>&nbsp</td>
+				</tr>
+				
+				<tr ng-repeat="designation in designations | filter: ((color[0] | uppercase) + '-')">
+					
+					<!-- designation -->
+					<td align="center">{{designation}}</td>
+					
+					<!-- runout -->
+					<td ng-show="inedit[designation]" align="center">
+						<input size="8" ng-model="flexRod[designation].runout" /></td>
+					<td ng-hide="inedit[designation]" ng-click="edit(designation)" align="center">
+						{{flexRod[designation].runout=='' ? 'null' : flexRod[designation].runout | number : 3}}</td>
+					
+					<!-- timestamp -->
+					<td align="center" nowrap="nowrap">{{flexRod[designation].timestamp}}</td>
+					
+					<!-- buttons -->
+					<td align="center" ng-hide="inedit[designation]" nowrap valign="top">
+							<button ng-click="edit(designation)">Edit</button></td>
+					<td align="center" ng-show="inedit[designation]" nowrap valign="top">
+							<button ng-click="save(designation)">Save</button>
+							<button ng-click="cancel(designation)">Cancel</button></td>				
+							
+				</tr>
+
+			</table>
+		</td>
+	</tr>
+</table>
+		
+<!-- -->		
+		
+		</td></tr>
+			
+</table></form>
+</body>
+</html>

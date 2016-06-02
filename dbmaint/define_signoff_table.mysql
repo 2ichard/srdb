@@ -1,0 +1,16 @@
+create table signoff (
+	id MEDIUMINT KEY AUTO_INCREMENT,
+	type VARCHAR(16) NOT NULL,
+	seg VARCHAR(8) NOT NULL,
+	t TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	tech VARCHAR(16) NOT NULL,
+	proc VARCHAR(8) NOT NULL,
+	version VARCHAR(8) NOT NULL,
+	sec TINYINT,
+	step TINYINT,
+	substep TINYINT,
+	part VARCHAR(8),
+	val VARCHAR(32),
+	notes VARCHAR(128)
+	);
+	 

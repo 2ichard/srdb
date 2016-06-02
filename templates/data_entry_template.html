@@ -1,0 +1,37 @@
+
+<!-- data entry template -->
+<p></p>
+
+<table width="90%" cellpadding="4" cellspacing="2" bgcolor="#99CCFF" ng-init="">
+<tr>
+<td align="center" nowrap="nowrap" class="section_title">%%title%%</td>
+
+<td ng-hide="isBatchProc" nowrap="nowrap">Segment: <span class="section_title">{{seg}}</span></td>
+<td ng-show="isBatchProc" nowrap="nowrap">Lot #: <span class="section_title">{{lotNum}}</span></td>
+
+<td>
+
+<table border="0" cellspacing="2" cellpadding="2">
+					<tr>
+						<td align="right">Procedure:</td>
+						<td class="figure_caption">%%proc%%</td>
+						<td align="right">&nbsp;</td>
+						<td align="right">Version:</td>
+						<td align="left" class="figure_caption">%%ver%%</td>
+						<td align="left">&nbsp;</td>
+						<td align="left">Section:</td>
+						<td align="left" class="figure_caption">%%sec%%</td>
+						<td align="left">&nbsp;</td>
+						<td align="left">Step:</td>
+						<td align="left" class="figure_caption">%%step%%</td>
+					</tr>
+			</table>
+				
+		</td>
+</tr><tr>
+<td colspan="3" align="center" nowrap="nowrap">
+	<button ng-click="openDataEntryTable('%%base_url%%', '%%proc%%', '%%ver%%', '%%sec%%', '%%step%%')">
+		Open %%title%% Data Entry Table</button>
+</td></tr></table> 
+<!-- end of data entry -->
+	

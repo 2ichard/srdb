@@ -1,0 +1,443 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="script/util.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/srdb.css" /><style type="text/css">
+.tiny_link {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+}
+.bold_table_heading {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+}
+</style>
+<script>
+function sortBy() {
+	alert("Click to sort by this column.\nClick again to reverse sort.");
+}
+function edit() {
+	alert("Click to edit status/location for this segment.");
+}
+function history() {
+	alert("Click to view segment history.");
+}
+</script>
+<title>%%title%%</title>
+</head>
+
+<body id="grad5">
+<form id="form1" name="form1" method="post" action="">
+<table width="95%" align="center" border="1" cellspacing="0" cellpadding="5" bordercolor="#DDDDDD">
+	<tr>
+		<td align="center">
+		<table width="95%" border="0" cellspacing="1" cellpadding="2">
+			<tr>
+				<td><span class="title1"><span class="title1_not_bold">Segment Repair Database</span></span></td>
+				<td align="right">&nbsp;</td>
+				<td align="right" class="title1">&nbsp;</td>
+			</tr>
+			<tr>
+				<td align="left" class="modeind"><script>document.write(getDateTime())</script>
+				<span class="title1">Segment Status and Location Report</span></td>
+				<td align="right"><!-- #BeginDate format:Am1a -->April 3, 2014 12:34 PM<!-- #EndDate --></td>
+				<td align="right">&nbsp;</td>
+			</tr>
+		</table></td>
+	</tr>
+	<tr>
+		<td align="center">
+			<table width="95%" border="0" cellspacing="1" cellpadding="2">
+			<tr>
+				<td align="left"><table width="95%" border="1" bordercolor="lightgrey" cellspacing="0" cellpadding="4">
+					<tr>
+							<td rowspan="2" valign="bottom" nowrap="nowrap" class="table_heading"><a href="javascript:sortBy()" class="bold_table_heading">Serial #</a></td>
+							<td rowspan="2" align="center" valign="bottom" nowrap="nowrap" class="table_heading">Command</td>
+							<td colspan="3" align="center" nowrap="nowrap" class="bold_table_heading">Last Update</td>
+							<td rowspan="2" align="center" valign="bottom" nowrap="nowrap" class="bold_table_heading">Damage <br />
+								Level</td>
+							<td rowspan="2" align="center" valign="bottom" nowrap="nowrap" class="bold_table_heading">Location</td>
+							<td rowspan="2" valign="bottom" nowrap="nowrap" class="bold_table_heading">Repaired?</td>
+							<td rowspan="2" align="center" valign="bottom" nowrap="nowrap" class="bold_table_heading">Exchangable?</td>
+							<td rowspan="2" align="center" valign="bottom" nowrap="nowrap" class="table_heading"><span class="bold_table_heading">Destination</span></td>
+							<td align="center" nowrap="nowrap" class="table_heading">&nbsp;</td>
+							<td nowrap="nowrap" class="table_heading">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" class="bold_table_heading">Date</td>
+							<td align="center" nowrap="nowrap" class="bold_table_heading">Time</td>
+							<td align="center" nowrap="nowrap" class="bold_table_heading">By</td>
+							<td align="center" nowrap="nowrap" class="bold_table_heading">Ready</td>
+							<td nowrap="nowrap" class="bold_table_heading">Notes</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" class="table_cell">1-04</td>
+							<td align="center" nowrap="nowrap"><span class="tiny_link"><a href="javascript:edit()">Edit</a></span> <span class="tiny_link">|</span> <span class="tiny_link"><a href="javascript:history()">History</a></span></td>
+							<td align="center" nowrap="nowrap">04-01-2015</td>
+							<td align="center" nowrap="nowrap">10:10:10</td>
+							<td align="center" nowrap="nowrap">Schaefer</td>
+							<td align="center" nowrap="nowrap">1</td>
+							<td align="center" nowrap="nowrap">K1</td>
+							<td align="center" nowrap="nowrap">Repaired</td>
+							<td align="center" nowrap="nowrap">Exchangable</td>
+							<td align="center" nowrap="nowrap">-</td>
+							<td align="center" nowrap="nowrap">-</td>
+							<td nowrap="nowrap">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" class="table_cell">1-05</td>
+							<td align="center" nowrap="nowrap"><span class="tiny_link"><a href="javascript:edit()">Edit</a></span> <span class="tiny_link">|</span> <span class="tiny_link"><a href="javascript:history()">History</a></span></td>
+							<td align="center" nowrap="nowrap">04-01-2015</td>
+							<td align="center" nowrap="nowrap">13:30:00</td>
+							<td align="center" nowrap="nowrap">Schaefer</td>
+							<td align="center" nowrap="nowrap">2</td>
+							<td align="center" nowrap="nowrap">K2</td>
+							<td align="center" nowrap="nowrap">Unrepaired</td>
+							<td align="center" nowrap="nowrap">Exchangable</td>
+							<td align="center" nowrap="nowrap">-</td>
+							<td align="center" nowrap="nowrap">-</td>
+							<td nowrap="nowrap">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" class="table_cell">1-05</td>
+							<td align="center" nowrap="nowrap"><span class="tiny_link"><a href="javascript:edit()">Edit</a></span> <span class="tiny_link">|</span> <span class="tiny_link"><a href="javascript:history()">History</a></span></td>
+							<td align="center" nowrap="nowrap">04-01-2015</td>
+							<td align="center" nowrap="nowrap">10:10:10</td>
+							<td align="center" nowrap="nowrap">Schaefer</td>
+							<td align="center" nowrap="nowrap">2</td>
+							<td align="center" nowrap="nowrap">K2</td>
+							<td align="center" nowrap="nowrap">Unrepaired</td>
+							<td align="center" nowrap="nowrap">Not Exchangable</td>
+							<td align="center" nowrap="nowrap">-</td>
+							<td align="center" nowrap="nowrap">-</td>
+							<td nowrap="nowrap">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" class="table_cell">1-06</td>
+							<td align="center" nowrap="nowrap"><span class="tiny_link"><a href="javascript:edit()">Edit</a></span> <span class="tiny_link">|</span> <span class="tiny_link"><a href="javascript:history()">History</a></span></td>
+							<td align="center" nowrap="nowrap">04-01-2015</td>
+							<td align="center" nowrap="nowrap">13:30:00</td>
+							<td align="center" nowrap="nowrap">Schaefer</td>
+							<td align="center" nowrap="nowrap">3</td>
+							<td align="center" nowrap="nowrap">Summit Barn</td>
+							<td align="center" nowrap="nowrap">Unrepaired</td>
+							<td align="center" nowrap="nowrap">Exchangable</td>
+							<td align="center" nowrap="nowrap">Telescope</td>
+							<td align="center" nowrap="nowrap">-</td>
+							<td nowrap="nowrap">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" class="table_cell">1-06</td>
+							<td align="center" nowrap="nowrap"><span class="tiny_link"><a href="javascript:edit()">Edit</a></span> <span class="tiny_link">|</span> <span class="tiny_link"><a href="javascript:history()">History</a></span></td>
+							<td align="center" nowrap="nowrap">04-01-2015</td>
+							<td align="center" nowrap="nowrap">10:10:10</td>
+							<td align="center" nowrap="nowrap">Schaefer</td>
+							<td align="center" nowrap="nowrap">3</td>
+							<td align="center" nowrap="nowrap">Summit Barn</td>
+							<td align="center" nowrap="nowrap">Unrepaired</td>
+							<td align="center" nowrap="nowrap">Not Exchangable</td>
+							<td align="center" nowrap="nowrap">HQ Barn</td>
+							<td align="center" nowrap="nowrap">-</td>
+							<td nowrap="nowrap">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" class="table_cell">1-46</td>
+							<td align="center" nowrap="nowrap"><span class="tiny_link"><a href="javascript:edit()">Edit</a></span> <span class="tiny_link">|</span> <span class="tiny_link"><a href="javascript:history()">History</a></span></td>
+							<td align="center" nowrap="nowrap">04-01-2015</td>
+							<td align="center" nowrap="nowrap">13:30:00</td>
+							<td align="center" nowrap="nowrap">Schaefer</td>
+							<td align="center" nowrap="nowrap">1</td>
+							<td align="center" nowrap="nowrap">Summit Barn</td>
+							<td align="center" nowrap="nowrap">Unrepaired</td>
+							<td align="center" nowrap="nowrap">Exchangable</td>
+							<td align="center" nowrap="nowrap">Telescope</td>
+							<td align="center" nowrap="nowrap">Ready</td>
+							<td nowrap="nowrap">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" class="table_cell">1-49</td>
+							<td align="center" nowrap="nowrap"><span class="tiny_link"><a href="javascript:edit()">Edit</a></span> <span class="tiny_link">|</span> <span class="tiny_link"><a href="javascript:history()">History</a></span></td>
+							<td align="center" nowrap="nowrap">04-01-2015</td>
+							<td align="center" nowrap="nowrap">10:10:10</td>
+							<td align="center" nowrap="nowrap">Schaefer</td>
+							<td align="center" nowrap="nowrap">2</td>
+							<td align="center" nowrap="nowrap">Summit Barn</td>
+							<td align="center" nowrap="nowrap">Unrepaired</td>
+							<td align="center" nowrap="nowrap">Exchangable</td>
+							<td align="center" nowrap="nowrap">Telescope</td>
+							<td align="center" nowrap="nowrap">Not Ready</td>
+							<td nowrap="nowrap">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" class="table_cell">1-57</td>
+							<td align="center" nowrap="nowrap"><span class="tiny_link"><a href="javascript:edit()">Edit</a></span> <span class="tiny_link">|</span> <span class="tiny_link"><a href="javascript:history()">History</a></span></td>
+							<td align="center" nowrap="nowrap">04-01-2015</td>
+							<td align="center" nowrap="nowrap">13:30:00</td>
+							<td align="center" nowrap="nowrap">Schaefer</td>
+							<td align="center" nowrap="nowrap">3</td>
+							<td align="center" nowrap="nowrap">Summit Barn</td>
+							<td align="center" nowrap="nowrap">Unrepaired</td>
+							<td align="center" nowrap="nowrap">Not Exchangable</td>
+							<td align="center" nowrap="nowrap">HQ Barn</td>
+							<td align="center" nowrap="nowrap">Ready</td>
+							<td nowrap="nowrap">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" class="table_cell">1-65</td>
+							<td align="center" nowrap="nowrap"><span class="tiny_link"><a href="javascript:edit()">Edit</a></span> <span class="tiny_link">|</span> <span class="tiny_link"><a href="javascript:history()">History</a></span></td>
+							<td align="center" nowrap="nowrap">04-01-2015</td>
+							<td align="center" nowrap="nowrap">10:10:10</td>
+							<td align="center" nowrap="nowrap">Schaefer</td>
+							<td align="center" nowrap="nowrap">1</td>
+							<td align="center" nowrap="nowrap">Summit Barn</td>
+							<td align="center" nowrap="nowrap">Unrepaired</td>
+							<td align="center" nowrap="nowrap">Not Exchangable</td>
+							<td align="center" nowrap="nowrap">HQ Barn</td>
+							<td align="center" nowrap="nowrap">Not Ready</td>
+							<td nowrap="nowrap">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" class="table_cell">2-09</td>
+							<td align="center" nowrap="nowrap"><span class="tiny_link"><a href="javascript:edit()">Edit</a></span> <span class="tiny_link">|</span> <span class="tiny_link"><a href="javascript:history()">History</a></span></td>
+							<td align="center" nowrap="nowrap">04-01-2015</td>
+							<td align="center" nowrap="nowrap">13:30:00</td>
+							<td align="center" nowrap="nowrap">Schaefer</td>
+							<td align="center" nowrap="nowrap">2</td>
+							<td align="center" nowrap="nowrap">Summit Barn</td>
+							<td align="center" nowrap="nowrap">Repaired</td>
+							<td align="center" nowrap="nowrap">Exchangable</td>
+							<td align="center" nowrap="nowrap">Telescope</td>
+							<td align="center" nowrap="nowrap">Ready</td>
+							<td nowrap="nowrap">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" class="table_cell">2-18</td>
+							<td align="center" nowrap="nowrap"><span class="tiny_link"><a href="javascript:edit()">Edit</a></span> <span class="tiny_link">|</span> <span class="tiny_link"><a href="javascript:history()">History</a></span></td>
+							<td align="center" nowrap="nowrap">04-01-2015</td>
+							<td align="center" nowrap="nowrap">10:10:10</td>
+							<td align="center" nowrap="nowrap">Schaefer</td>
+							<td align="center" nowrap="nowrap">3</td>
+							<td align="center" nowrap="nowrap">Summit Barn</td>
+							<td align="center" nowrap="nowrap">Repaired</td>
+							<td align="center" nowrap="nowrap">Exchangable</td>
+							<td align="center" nowrap="nowrap">Telescope</td>
+							<td align="center" nowrap="nowrap">No Ready</td>
+							<td nowrap="nowrap">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" class="table_cell">2-25</td>
+							<td align="center" nowrap="nowrap"><span class="tiny_link"><a href="javascript:edit()">Edit</a></span> <span class="tiny_link">|</span> <span class="tiny_link"><a href="javascript:history()">History</a></span></td>
+							<td align="center" nowrap="nowrap">04-01-2015</td>
+							<td align="center" nowrap="nowrap">13:30:00</td>
+							<td align="center" nowrap="nowrap">Schaefer</td>
+							<td align="center" nowrap="nowrap">4</td>
+							<td align="center" nowrap="nowrap">HQ Barn</td>
+							<td align="center" nowrap="nowrap">Unrepaired</td>
+							<td align="center" nowrap="nowrap">Not Exchangable</td>
+							<td align="center" nowrap="nowrap">Crack lab</td>
+							<td align="center" nowrap="nowrap">Ready</td>
+							<td nowrap="nowrap">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" class="table_cell">2-32</td>
+							<td align="center" nowrap="nowrap"><span class="tiny_link"><a href="javascript:edit()">Edit</a></span> <span class="tiny_link">|</span> <span class="tiny_link"><a href="javascript:history()">History</a></span></td>
+							<td align="center" nowrap="nowrap">04-01-2015</td>
+							<td align="center" nowrap="nowrap">10:10:10</td>
+							<td align="center" nowrap="nowrap">Schaefer</td>
+							<td align="center" nowrap="nowrap">1</td>
+							<td align="center" nowrap="nowrap">HQ Barn</td>
+							<td align="center" nowrap="nowrap">Unrepaired</td>
+							<td align="center" nowrap="nowrap">Exchangable</td>
+							<td align="center" nowrap="nowrap">Telescope</td>
+							<td align="center" nowrap="nowrap">Ready</td>
+							<td nowrap="nowrap">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" class="table_cell">2-67</td>
+							<td align="center" nowrap="nowrap"><span class="tiny_link"><a href="javascript:edit()">Edit</a></span> <span class="tiny_link">|</span> <span class="tiny_link"><a href="javascript:history()">History</a></span></td>
+							<td align="center" nowrap="nowrap">04-01-2015</td>
+							<td align="center" nowrap="nowrap">13:30:00</td>
+							<td align="center" nowrap="nowrap">Schaefer</td>
+							<td align="center" nowrap="nowrap">2</td>
+							<td align="center" nowrap="nowrap">HQ Barn</td>
+							<td align="center" nowrap="nowrap">Repaired</td>
+							<td align="center" nowrap="nowrap">Exchangable</td>
+							<td align="center" nowrap="nowrap">Telescope</td>
+							<td align="center" nowrap="nowrap">Ready</td>
+							<td nowrap="nowrap">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" class="table_cell">2-74</td>
+							<td align="center" nowrap="nowrap"><span class="tiny_link"><a href="javascript:edit()">Edit</a></span> <span class="tiny_link">|</span> <span class="tiny_link"><a href="javascript:history()">History</a></span></td>
+							<td align="center" nowrap="nowrap">04-01-2015</td>
+							<td align="center" nowrap="nowrap">10:10:10</td>
+							<td align="center" nowrap="nowrap">Schaefer</td>
+							<td align="center" nowrap="nowrap">5</td>
+							<td align="center" nowrap="nowrap">HQ Station 1</td>
+							<td align="center" nowrap="nowrap">Unrepaired</td>
+							<td align="center" nowrap="nowrap">Not Exchangable</td>
+							<td align="center" nowrap="nowrap">-</td>
+							<td align="center" nowrap="nowrap">Not Ready</td>
+							<td nowrap="nowrap">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" class="table_cell">2-78</td>
+							<td align="center" nowrap="nowrap"><span class="tiny_link"><a href="javascript:edit()">Edit</a></span> <span class="tiny_link">|</span> <span class="tiny_link"><a href="javascript:history()">History</a></span></td>
+							<td align="center" nowrap="nowrap">04-01-2015</td>
+							<td align="center" nowrap="nowrap">13:30:00</td>
+							<td align="center" nowrap="nowrap">Schaefer</td>
+							<td align="center" nowrap="nowrap">1</td>
+							<td align="center" nowrap="nowrap">HQ Station 2</td>
+							<td align="center" nowrap="nowrap">Unrepaired</td>
+							<td align="center" nowrap="nowrap">Not Exchangable</td>
+							<td align="center" nowrap="nowrap">-</td>
+							<td align="center" nowrap="nowrap">Not Ready</td>
+							<td nowrap="nowrap">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" class="table_cell">2-81</td>
+							<td align="center" nowrap="nowrap"><span class="tiny_link"><a href="javascript:edit()">Edit</a></span> <span class="tiny_link">|</span> <span class="tiny_link"><a href="javascript:history()">History</a></span></td>
+							<td align="center" nowrap="nowrap">04-01-2015</td>
+							<td align="center" nowrap="nowrap">13:30:00</td>
+							<td align="center" nowrap="nowrap">Schaefer</td>
+							<td align="center" nowrap="nowrap">2</td>
+							<td align="center" nowrap="nowrap">HQ Station 3</td>
+							<td align="center" nowrap="nowrap">Repaired</td>
+							<td align="center" nowrap="nowrap">Exchangable</td>
+							<td align="center" nowrap="nowrap">HQ Barn</td>
+							<td align="center" nowrap="nowrap">Ready</td>
+							<td nowrap="nowrap">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" valign="top" nowrap="nowrap" bgcolor="#FFFF99" class="table_cell">3-11</td>
+							<td align="center" valign="top" nowrap="nowrap" bgcolor="#FFFF99"><span class="tiny_link"><a href="javascript:edit()">Save</a></span> <span class="tiny_link">|</span> <span class="tiny_link"><a href="javascript:history()">Cancel</a></span></td>
+							<td align="center" valign="top" nowrap="nowrap" bgcolor="#FFFF99">&nbsp;</td>
+							<td align="center" valign="top" nowrap="nowrap" bgcolor="#FFFF99">&nbsp;</td>
+							<td align="center" valign="top" nowrap="nowrap" bgcolor="#FFFF99"><select name="by" id="by">
+								<option>Marisco</option>
+								<option>Sancho</option>
+								<option selected="selected">Schaefer</option>
+								<option>Valecius</option>
+							</select></td>
+							<td align="center" valign="top" nowrap="nowrap" bgcolor="#FFFF99"><select name="level" id="level">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+							</select></td>
+							<td align="center" valign="top" nowrap="nowrap" bgcolor="#FFFF99"><select name="location" id="location">
+								<option>K1</option>
+								<option>K2</option>
+								<option>Summit Barn</option>
+								<option>HQ Barn</option>
+								<option>HQ Station 1</option>
+								<option>HQ Station 2</option>
+								<option>HQ Station 3</option>
+							</select></td>
+							<td align="left" valign="top" nowrap="nowrap" bgcolor="#FFFF99"><label>
+								<input type="radio" name="repaired" id="radio" value="radio" />
+								Repaired</label>
+								<br />
+								<label>
+									<input type="radio" name="repaired" id="radio2" value="radio" />
+									Not Repaired</label></td>
+							<td align="left" valign="top" nowrap="nowrap" bgcolor="#FFFF99"><label>
+								<input type="radio" name="exchangable" id="radio3" value="radio" />
+								Exchangable</label>
+								<br />
+								<label>
+									<input type="radio" name="exchangable" id="radio4" value="radio" />
+									Not Exchangable</label></td>
+							<td align="center" valign="top" nowrap="nowrap" bgcolor="#FFFF99"><select name="location2" id="location2">
+								<option>K1</option>
+								<option>K2</option>
+								<option>Summit Barn</option>
+								<option>HQ Barn</option>
+								<option>HQ Station 1</option>
+								<option>HQ Station 2</option>
+								<option>HQ Station 3</option>
+							</select></td>
+							<td align="left" valign="top" nowrap="nowrap" bgcolor="#FFFF99"><label>
+								<input type="radio" name="ready" id="radio5" value="radio" />
+								Ready</label>
+								<br />
+								<label>
+									<input type="radio" name="ready" id="radio6" value="radio" />
+									Not Ready</label></td>
+							<td valign="top" nowrap="nowrap" bgcolor="#FFFF99"><label>
+								<textarea name="notes" id="notes" cols="32" rows="3"></textarea>
+							</label></td>
+							</tr>
+						<tr>
+							<td rowspan="5" align="center" valign="top" nowrap="nowrap" bgcolor="#99FFFF" class="table_cell">4-23</td>
+							<td rowspan="5" align="center" valign="top" nowrap="nowrap" bgcolor="#99FFFF"><span class="tiny_link"><a href="javascript:history()">Close | All</a></span></td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">04-01-2015</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">23:50:01</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">Marisco</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">4</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">K1</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">Unrepaired</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">No</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">-</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">-</td>
+							<td nowrap="nowrap" bgcolor="#99FFFF">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">04-02-2015</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">23:50:02</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">Schaefer</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">4</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">K1</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">Unrepaired</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">No</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">Summit Barn</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">Ready</td>
+							<td nowrap="nowrap" bgcolor="#99FFFF">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">04-03-2015</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">23:50:03</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">Schaefer</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">4</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">Summit Barn</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">Unrepaired</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">No</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">HQ Barn</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">Ready</td>
+							<td nowrap="nowrap" bgcolor="#99FFFF">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">04-04-2015</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">23:50:04</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">Sancho</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">4</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">HQ Barn</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">Unrepaired</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">No</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">HQ Station 1</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">Ready</td>
+							<td nowrap="nowrap" bgcolor="#99FFFF">&nbsp;</td>
+							</tr>
+						<tr>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">04-05-2015</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">23:50:05</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">Sancho</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">4</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">HQ Station 1</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">Repaired</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">Yes</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">HQ Barn</td>
+							<td align="center" nowrap="nowrap" bgcolor="#99FFFF">Ready</td>
+							<td nowrap="nowrap" bgcolor="#99FFFF">&nbsp;</td>
+							</tr>
+				</table>
+					<p>&nbsp;</p></td></tr></table>
+			</td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

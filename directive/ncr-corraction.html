@@ -1,0 +1,28 @@
+<!--
+	ncr-corraction.html
+
+	View all corrective actions
+	Can sort by open/closed and search on the action
+-->
+<p>
+<button ng-click="listCAs('all')">Show all CAs</button>
+<button ng-click="listCAs('closed')">Show closed CAs</button>
+<button ng-click="listCAs('open')">Show open CAs</button></br>
+<input type="text" ng-model="user.search" placeholder="search string">
+<button ng-click="listCAs('search', user)">Search CA action field</button>
+<table ng-show="showEditIP() != 1" style="border:1px solid #000;" width="600" cellpadding="10">
+<tr>
+	<th style="border:1px solid #000;" ng-click="order('ncr')">NCR#</th>
+	<th style="border:1px solid #000;" ng-click="order('status')">Status</th>
+	<th style="border:1px solid #000;" ng-click="order('assign_to')">Assigned To</th>
+	<th style="border:1px solid #000;" ng-click="order('due_date')">Due Date</th>
+	<th style="border:1px solid #000;">Action</th>
+</tr>
+<tr ng-repeat="ca in report.entries | orderBy:predicate:reverse" ng-click="editIP(ca.ip)">
+	<td style="border:1px solid #000;" valign="top">{{ca.ncr}}</td>
+	<td style="border:1px solid #000;" valign="top">{{ca.status}}</td>
+	<td style="border:1px solid #000;" valign="top">{{ca.assign_to}}</td>
+	<td style="border:1px solid #000;" valign="top">{{ca.due_date}}</td>
+	<td style="border:1px solid #000;" valign="top" width="60%">{{ca.action}}</td>
+</tr>
+</table>

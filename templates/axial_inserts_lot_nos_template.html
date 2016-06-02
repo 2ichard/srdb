@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="../script/util.js"></script>
+<script src="../script/angular.js"></script>
+<script src="../script/angular-cookies.js"></script>
+<script src="../script/axialInsertsController.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../css/srdb.css" />
+<title>Axial Insert Lot Numbers</title>
+</head>
+
+<body id="deeppinkgrad" ng-app="srdbAxialInsertsApp">
+<form id="form1" name="form1" method="post" action="">
+<table width="95%" align="center" border="1" cellspacing="0" cellpadding="5" bordercolor="#DDDDDD" 
+		ng-controller="AxialInsertsCtrl"  ng-init="seg='%%seg%%'">
+	<tr>
+		<td align="center"><table width="95%" border="0" cellspacing="2" cellpadding="2">
+			<tr>
+				<td nowrap="nowrap"><table border="0" cellspacing="2" cellpadding="2">
+					<tr>
+						<td nowrap="nowrap" colspan="2"><span class="title1_not_bold"> 
+						 <a href="../index.html"> Segment Repair Database</a></span></td>
+					</tr>
+					<tr>
+						<td nowrap="nowrap"><span class="modeind"><span class="title1">
+						Axial Insert Lot Numbers</span></span></td>
+						<td valign="middle" nowrap="nowrap" class="title2">&nbsp;</td>
+					</tr>
+				</table></td>
+				<td nowrap="nowrap" align="right"><table border="0" cellspacing="2" cellpadding="2">
+					<tr>
+						<td align="right" nowrap="nowrap">
+							<span class="title1_not_bold">Segment</span>
+							<span class="title1_italic">%%seg%%</span></td>
+						
+						<td align="right" class="title1">&nbsp;</td>
+						</tr>
+					<tr>
+						<td align="right" nowrap="nowrap" class="title1_not_bold">&nbsp;</td>
+						<td width="50" align="center">&nbsp;</td>
+						</tr>
+				</table></td>
+			</tr>
+		</table></td>
+	</tr>
+
+	<tr>
+		<td align="center">
+		
+			<br />
+			
+		<table cellpadding="4"><tr>
+			<td>Group: 
+				<select ng-model="query">
+					<option value="">All</option>
+					<option value="S">S</option>
+					<option value="W1">W1</option>
+					<option value="W2">W2</option>
+					<option value="W3">W3</option>
+					<option value="W4">W4</option>
+					<option value="W5">W5</option>
+					<option value="W6">W6</option>
+				</select> {{(positions | filter:query).length}} / 48 positions shown
+				</td>
+		</tr></table>	
+			
+		<table>
+			<tr>
+			
+			<!--<td ng-repeat="group in ['S', 'W1', 'W2', 'W3', 'W4', 'W5', 'W6']" valign="top">-->
+			<td valign="top">
+				<table align=center cellspacing="0" cellpadding="2" border="1" bordercolor="#BBBBBB">
+				<tr>
+					<td align="center">Axial Hole Number</td>
+					<td align="center">Lot #</td>
+					<td align="center">Timestamp</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr ng-show="enableAll">
+				<td align="center">All</td>
+			<td><select ng-model="lotAll" ng-options="lot for lot in lotList"/></td>
+			<td><button ng-click="saveAll()">Apply to All</button>
+			</td>
+				</tr>
+				<tr ng-repeat="pos in positions | filter:query | orderBy:pos">
+					<td align="center"valign="top" ng-click="edit(pos)">{{pos}}</td>
+					
+					<td ng-hide="inedit[pos]" align="center" valign="top" ng-click="edit(pos)">
+							{{insert[pos].lot}}</td>
+					<td ng-show="inedit[pos]" align="left" valign="top">
+						<select ng-model="insert[pos].lot" 
+						ng-options="lot for lot in lotList"/></td>
+						
+					<td align="center" ng-click="edit(pos)">{{insert[pos].timestamp}}</td>
+					
+					<!-- buttons -->
+					<td align="center" ng-hide="inedit[pos]" nowrap valign="top">
+							<button ng-click="edit(pos)">Edit</button></td>
+					<td align="center" ng-show="inedit[pos]" nowrap valign="top">
+							<button ng-click="save(pos)">Save</button>
+							<button ng-click="cancel(pos)">Cancel</button></td>
+				</tr>
+			</table>
+						
+			
+			
+			</td></tr><tr ng-hide="enableAll"><td colspan="3" align=center>
+			<button ng-click="(enableAll=true)">Enable 'Apply to All' button </button>
+			</td></tr>
+			
+</table></td></tr></form>
+</body>
+</html>

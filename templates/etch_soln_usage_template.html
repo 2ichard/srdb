@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="../script/util.js"></script>
+<script src="../script/angular.js"></script>
+<script src="../script/angular-cookies.js"></script>
+<script src="../script/etchSolnUsageController.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../css/srdb.css" />
+<title>Etch Solution Usage</title>
+</head>
+
+<body id="deeppinkgrad" ng-app="srdbEtchSolnUsageApp">
+<form id="form1" name="form1" method="post" action="">
+<table width="95%" align="center" border="1" cellspacing="0" cellpadding="5" bordercolor="#DDDDDD" 
+		ng-controller="EtchSolnUsageCtrl"  ng-init="seg='%%seg%%'">
+	<tr>
+		<td align="center"><table width="95%" border="0" cellspacing="2" cellpadding="2">
+			<tr>
+				<td nowrap="nowrap"><table border="0" cellspacing="2" cellpadding="2">
+					<tr>
+						<td nowrap="nowrap" colspan="2"><span class="title1_not_bold"> 
+						 <a href="../index.html"> Segment Repair Database</a></span></td>
+					</tr>
+					<tr>
+						<td nowrap="nowrap"><span class="modeind"><span class="title1">
+						Etch Solution Usage</span></span></td>
+						<td valign="middle" nowrap="nowrap" class="title2">&nbsp;</td>
+					</tr>
+				</table></td>
+				<td nowrap="nowrap" align="right"><table border="0" cellspacing="2" cellpadding="2">
+					<tr>
+						<td align="right" nowrap="nowrap">
+							<span class="title1_not_bold">Segment</span>
+							<span class="title1_italic">%%seg%%</span></td>
+						
+						<td align="right" class="title1">&nbsp;</td>
+						</tr>
+					<tr>
+						<td align="right" nowrap="nowrap" class="title1_not_bold">&nbsp;</td>
+						<td width="50" align="center">&nbsp;</td>
+						</tr>
+				</table></td>
+			</tr>
+		</table></td>
+	</tr>
+
+	<tr>
+		<td align="center">
+			<table border="0" cellspacing="2" cellpadding="2">
+				<tr>
+					<td class="title1">Axial Holes</td>
+				</tr>
+				<tr>
+					<td><table align=center cellspacing="0" cellpadding="2" border="1" bordercolor="#BBBBBB">
+						<tr>
+							<td align="center">Batch</td>
+							<td align="center">Lot #</td>
+							<td align="center">Volume Used (ml)</td>
+							<td align="center">Timestamp</td>
+							<td>&nbsp;</td>
+						</tr>
+						
+						<tr ng-repeat="index in [1] | filter:query | orderBy:orderProp">
+						
+							<td align="center" ng-click="edit('axial', 1)">1</td>
+
+							<!-- lot number -->
+							<td ng-hide="inedit['axial'][1]" align="center" valign="top" ng-click="edit('axial', 1)"> 
+									{{soln['axial'][1].lot}}</td>
+							<td ng-show="inedit['axial'][1]" align="left" valign="top"><select name="select2" 
+									ng-model="soln['axial'][1].lot" ng-options="lot for lot in lotList"/>
+							</td>
+							
+							<!-- volume used -->
+							<td ng-hide="inedit['axial'][1]" align="center" valign="top" ng-click="edit(pos)"> 
+									{{soln['axial'][1].vol}}</td>
+							<td ng-show="inedit['axial'][1]" align="center" valign="top">
+							<select name="select" ng-model="soln['axial'][1].vol" ng-options="vol for vol in ['500']"/>
+							</td>
+							
+							<!-- timestamp -->
+							<td align="center" ng-click="edit('axial', 1)">{{soln['axial'][1].timestamp}}</td>
+							<!-- buttons -->
+							<td align="center" ng-hide="inedit['axial'][1]" nowrap valign="top">
+								<button ng-click="edit('axial', 1)">Edit</button></td>
+							<td align="center" ng-show="inedit['axial'][1]" nowrap valign="top">
+								<button ng-click="save('axial', 1)">Save</button>
+								<button ng-click="cancel('axial', 1)">Cancel</button></td>
+						</tr>
+					</table></td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+			
+			<!--<td ng-repeat="group in ['S', 'W1', 'W2', 'W3', 'W4', 'W5', 'W6']" valign="top">-->
+			<td valign="top">&nbsp;</td>
+						
+	</tr></table>
+			<table border="0" cellspacing="2" cellpadding="2">
+				<tr>
+					<td class="title1">Radial Hole</td>
+				</tr>
+				<tr>
+					<td><table align="center" cellspacing="0" cellpadding="2" border="1" bordercolor="#BBBBBB">
+						<tr>
+							<td align="center">Batch</td>
+							<td align="center">Lot #</td>
+							<td align="center">Volume Used (ml)</td>
+							<td align="center">Timestamp</td>
+							<td>&nbsp;</td>
+						</tr>
+							
+						<tr ng-repeat="batch in [1] | filter:query | orderBy:orderProp">
+							
+							<!-- batch -->
+							<td align="center" ng-click="edit('radial', batch)">{{batch}}</td>
+							
+							<!-- lot number -->
+							<td ng-hide="inedit['radial'][batch]" align="center" valign="top" ng-click="edit('radial', batch)"> 
+								{{soln['radial'][batch].lot}}</td>
+							<td ng-show="inedit['radial'][batch]" align="left" valign="top">
+								<select name="select" ng-model="soln['radial'][batch].lot" ng-options="lot for lot in lotList"/>
+							</td>
+								
+							<!-- volume used -->
+							<td ng-hide="inedit['radial'][batch]" align="center" valign="top" ng-click="edit('radial', batch)"> 
+									{{soln['radial'][batch].vol}}</td>
+							<td ng-show="inedit['radial'][batch]" align="center" valign="top">
+								<select name="select" ng-model="soln['radial'][batch].vol" ng-options="vol for vol in ['500']"/>
+							</td>
+								
+							<!-- timestamp -->
+							<td align="center" ng-click="edit('radial', batch)">{{soln['radial'][batch].timestamp}}</td>
+							
+							<!-- buttons -->
+							<td align="center" ng-hide="inedit['radial'][batch]" nowrap="nowrap" valign="top">
+								<button ng-click="edit('radial', batch)">Edit</button></td>
+							<td align="center" ng-show="inedit['radial'][batch]" nowrap="nowrap" valign="top">
+								<button ng-click="save('radial', batch)">Save</button>
+								<button ng-click="cancel('radial', batch)">Cancel</button></td>
+						</tr>
+					</table></td>
+				</tr>
+			</table>
+			<p>&nbsp;</p>
+			</td></tr>
+			
+			</table>
+</form>
+</body>
+</html>

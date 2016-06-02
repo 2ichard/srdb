@@ -1,0 +1,202 @@
+<!--
+	ncr-form.html
+
+	View and edit form for an NCR entry
+-->
+<form name="ncrform">
+<table>
+	<tr>
+		<th class="center" colspan="2">
+			<u><h4>Nonconformance Report (NCR) for Segment Repair Project</h4></u>
+		</th>
+		<th class="right">
+			NCR #<input type="text" ng-model="user.ncr" placeholder="auto-created" size="7" readonly>
+		</th>
+	</tr>
+	<tr>
+		<th class="left">Segment Type
+			<select ng-model="user.seg_type" name="seg_type" id="seg_type" ng-change="getSegSN()" ng-disabled="isReadOnly()">
+				<option value=""></option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+			</select>
+		</th>
+		<th class="left">Segment S/N 
+			<select ng-model="user.seg_sn2" ng-options="c.name for c in seg_sn2" name="seg_sn2" id="seg_sn2" ng-change="setSegSN()" ng-disabled="isReadOnly()">
+				<option></option>
+			</select>
+			<input type="text" ng-model="user.seg_sn" size="2" readonly></input>
+		</th>
+		<th class="right">Date Initiated
+			<input type="text" ng-model="user.date_start" placeholder="auto-filled" readonly>
+		</th>
+	</tr>
+	<tr>
+		<th class="left" colspan="1">Component Lot or Batch
+			<input type="text" ng-model="user.com_lot" name="com_lot" id="com_lot" ng-readonly="isReadOnly()">
+		</th>
+		<th class="left" colspan="1">Quantity
+			<input type="text" ng-model="user.quantity" ng-readonly="isReadOnly()" size="2">
+		</th>
+		<th class="right">Date Completed
+			<input type="text" ng-model="user.date_end" placeholder="auto-filled" readonly>
+		</th>
+	</tr>
+	<tr>
+		<th class="left">
+			Component P/N
+			<select ng-model="user.com_pn" name="com_pn" id="com_pn" ng-change="getComponentDescription()" ng-disabled="isReadOnly()">
+				<option value=""></option>
+				<option value="771-C5110">771-C5110</option>
+				<option value="771-C5111">771-C5111</option>
+				<option value="771-C5112">771-C5112</option>
+				<option value="771-C5201">771-C5201</option>
+				<option value="771-22A814">771-22A814</option>
+				<option value="771-C22A814">771-C22A814</option>
+				<option value="771-C22A814A">771-C22A814A</option>
+				<option value="SRP124">SRP124</option>
+				<option value="Other">Other</option>
+			</select>
+		</th>
+		<th colspan="3" align="left" bgcolor="#E8E8E8">Part Description
+			<input type="text" ng-model="user.part_description" ng_readonly="isReadOnly()" size="40">
+		</th>
+	</tr>
+	<tr><th colspan="3" align="left" bgcolor="#E8E8E8">IS CONDITION*</th></tr>
+	<tr><td colspan="3"><textarea ng-model="user.is_condition" ng_readonly="isReadOnly()" rows="2"></textarea></td></tr>
+	<tr>
+		<th colspan="2">REQUIREMENT VIOLATED*</th>
+		<th class="right">Inspection Plan Number*
+			<input type="text" ng-model="user.plan_num" placeholder="enter 0 if none" ng-readonly="isReadOnly()" ng-change="getViolation()">
+		</th>
+	</tr>
+	<tr><td colspan="3">
+		<textarea ng-model="user.violation" placeholder="auto-filled by inspection plan number selection" rows="5" readonly></textarea>
+	</td></tr>
+	<tr>
+		<th colspan="2">
+			DISPOSITION
+		</th>
+		<th class="right">
+			Keyword
+			<select ng-model="user.keyword" name="keyword" id="keyword" ng-disabled="isReadOnly()">
+				<option value=""></option>
+				<option value="USEASIS">USEASIS</option>
+				<option value="REPAIR">REPAIR</option>
+				<option value="REWORK">REWORK</option>
+				<option value="SCRAP">SCRAP</option>
+				<option value="INFO">INFO</option>
+			</select>
+		</th>
+	</tr>
+	<tr><td colspan="3"><textarea ng-model="user.disposition" ng-readonly="isReadOnly()" rows="3"></textarea></td></tr>
+	<tr><th colspan="3">CAUSE</th></tr>
+	<tr><td colspan="3"><textarea ng-model="user.cause" ng-readonly="isReadOnly()" rows="3"></textarea></td></tr>
+	<tr><th class="right" colspan="3"><button type="button" ng-show="!isReadOnly() && report.isloggedin" ng-click="updateNcr(user)">Submit</button></th></tr>
+	<tr ng-show="showNewNCR() != 1"><th colspan="3" class="black"></th></tr>
+	<!--
+		Limited processes
+	-->
+	<tr ng-show="showNewNCR() != 1">
+		<th colspan="3">LIMITED PROCESS</th>
+	</tr>
+	<tr ng-show="showNewNCR() != 1 && !isReadOnly() && report.canAddLimProcess">
+		<td colspan="2">
+			<textarea ng-model="user.limited_process_text" placeholder="add limited process" rows="2"></textarea>
+		</td>
+		<td valign="top">
+			<input type="text" ng-model="user.limited_process_username" ng-readonly="1" size="18">
+			<button type="button" ng-click="addLimitedProcess(user)">Add Limited Process</button>
+		</td>
+	</tr>
+	<tr ng-show="showNewNCR() != 1">
+		<td colspan="3"><pre>{{user.limited_process}}</pre></td>
+	</tr>
+	<tr ng-show="showNewNCR() != 1">
+		<th colspan="3" class="black"></th>
+	</tr>
+	<!--
+		Corrective actions
+	-->
+	<tr ng-show="showNewNCR() != 1">
+		<th colspan="3">CORRECTIVE ACTION</th>
+	</tr>
+	<tr ng-show="showNewNCR() != 1 && !isReadOnly() && report.canAddCorrAction">
+		<td colspan="3">
+			<textarea ng-model="user.corrective_newaction" placeholder="add corrective action text" rows="2"></textarea>
+		</td>
+	</tr>
+	<tr ng-show="showNewNCR() != 1 && !isReadOnly() && report.canAddCorrAction">
+		<td colspan="3">
+			Assign To: <input type="text" ng-model="user.ca_name" placeholder="input email alias" size="18">
+			Due Date: <input type="text" ng-model="user.ca_date" placeholder="yyyy-mm-dd" size="10">
+			<button type="button" ng-click="addCorrAction(user)">Add Corrective Action</button>
+		</td>
+	</tr>
+	<tr ng-show="showNewNCR() != 1">
+		<td colspan="3"><pre>{{user.corrective_action}}</pre></td>
+	</tr>
+	<tr ng-show="showNewNCR() != 1" ng-repeat="ca in report.ca">
+		<td style="border:0px" colspan="3">
+	<pre>
+ID:		{{ca.num}}
+Status:		{{ca.status}}
+Assigned To:	{{ca.assign_to}}
+Due Date:	{{ca.due_date}}<br>
+{{ca.action}}
+</pre>
+	<!--
+		<input type="text" ng-model="user.ca_closure[ca.id]" ng-show="ca.status == 'open' && report.canCloseCorrAction" placeholder="input email alias">
+	-->
+		<button type="button" ng-show="ca.status == 'open' && report.canCloseCorrAction" ng-click="closeCorrAction(ca.id)">Close action #{{ca.num}}</button>
+		</td>
+	</tr>
+	<tr ng-show="showNewNCR() != 1">
+		<th colspan="3" class="black"></th>
+	</tr>
+	<!--
+		Approvals section
+	-->
+	<tr ng-show="showNewNCR() != 1">
+		<th colspan="3" class="center">Disposition Approvals<br>
+			<input type="text" ng-show="showNewNCR() != 1 && !isReadOnly() && report.isadmin" ng-model="user.da_name" placeholder="approvers email alias" size="15">
+			<select ng-show="showNewNCR() != 1 && !isReadOnly() && report.isadmin" ng-model="user.da_type" name="da_type" id="da_type">
+				<option value=""></option>
+				<option value="Engineering">Engineering</option>
+				<option value="Quality">Quality</option>
+				<option value="Rework">Rework</option>
+			</select>
+			<button type="button" ng-show="showNewNCR() != 1 && !isReadOnly() && report.isadmin" ng-click="addApproval(user)">Add Approval</button>
+		</th>
+	</tr>
+	<tr ng-show="showNewNCR() != 1">
+		<th>Engineering <input type="text" ng-model="user.da_eng" placeholder="auto-filled" readonly> </th>
+		<th>Quality <input type="text" ng-model="user.da_quality" placeholder="auto-filled" readonly> </th>
+		<th>Rework/Repair Validation by Quality Engineer <input type="text" ng-model="user.da_rework" placeholder="auto-filled" readonly> </th>
+	</tr>
+	<tr ng-show="showNewNCR() != 1">
+		<th colspan="3" class="black"></th>
+	</tr>
+</table>
+</form>
+</br>
+<!--
+	Attachments
+-->
+<div ng-show="showNewNCR() != 1">
+<form method="get" action="../lib/ncr/attachment.php">
+	<input type="hidden" name="ncr" value="{{report.entry.ncr}}">
+	<table>
+		<tr>
+			<th colspan="2">Files attached to ncr #{{report.entry.ncr}} <input ng-show="report.isloggedin" type="submit" value="Attach another file"></th>
+		</tr>
+		<tr>
+			<td><p ng-repeat="file in report.attachments"><a href="{{file.loc}}">{{file.name}}</a></p></td>
+		</tr>
+	</table>
+</form>
+</div>

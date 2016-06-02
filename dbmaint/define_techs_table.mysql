@@ -1,0 +1,5 @@
+create table techs (
+	id mediumint KEY AUTO_INCREMENT,
+	name varchar(16),
+	type varchar(16)
+	);

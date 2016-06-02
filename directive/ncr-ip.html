@@ -1,0 +1,51 @@
+<!--
+	ncr-ip.html
+	
+	Lists all IPs associated with the NCR system
+	Viewable by all
+	Can be updated by those that canEditIps
+	
+-->
+<p>
+<!--
+	Table to list all of the IPs
+-->
+<table ng-show="showEditIP() != 1" style="border:1px solid #000;" cellpadding="10">
+	<tr>
+		<th style="border:1px solid #000;" ng-click="order('ip')">IP #</th>
+		<th style="border:1px solid #000;">Description&nbsp;&nbsp;
+			<button type="button" ng-click="addNewIP()" ng-show="report.canEditIPs">Add a new IP</button>
+		</th>
+	</tr>
+	<tr ng-repeat="ip in report.entries | orderBy:predicate:reverse">
+		<td style="border:1px solid #000;" valign="top" ng-show="!report.canEditIPs">{{ip.ip}}</td>
+		<td style="border:1px solid #000;" valign="top" ng-show="report.canEditIPs">
+			<button type="button" ng-click="editIP(ip.ip)">{{ip.ip}}</button>
+		</td>
+		<td style="border:1px solid #000;" width="750">{{ip.description}}</td>
+	</tr>
+</table>
+<!--
+	IP edit form
+-->
+<table ng-show="showEditIP() == 1" style="border:1px solid #000;" cellpadding="10">
+	<tr>
+		<th style="border:1px solid #000;">IP #:</th>
+		<td style="border:1px solid #000;">
+			<input type="text" ng-model="user.ip" size="5" placeholder="123A">
+		</td>
+	</tr>
+	<tr>
+		<th style="border:1px solid #000;">Description:</th>
+		<td style="border:1px solid #000;">
+			<textarea ng-model="user.description" cols="90" rows="8"></textarea>
+		</td>
+	</tr>
+	<tr>
+		<th style="border:1px solid #000;" align="right" colspan="2">
+			<button type="button" ng-click="updateIP(user)">Submit</button>
+<!--			<button type="button" ng-click="deleteIP(user)">Delete IP</button> -->
+			<button type="button" ng-click="listIPs()">Cancel</button>
+		</th>
+	</tr>
+</table>

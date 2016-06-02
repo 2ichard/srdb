@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="../script/util.js"></script>
+<script src="../script/signOff.js"></script>
+<script src="../script/techSelect.js"></script>
+<script src="../script/segSelect.js"></script>
+
+<script src="../script/angular.js"></script>
+<script src="../script/angular-cookies.js"></script>
+<script src="../script/procCtrl.js"></script>
+
+<script>
+function updateContentLocation() {
+	if (getCookie("content").length < 1)
+		return;
+	var imageElements = document.images;
+	for (var i = 0; i < imageElements.length; i++) 
+		imageElements[i].src = 
+			imageElements[i].src.replace("content/images", getCookie("content") + "/images");
+	var linkElements = document.links;
+	for (var i = 0; i < linkElements.length; i++) 
+		linkElements[i].href = 
+			linkElements[i].href.replace("content/images", getCookie("content") + "/images");
+}
+function updateSegSN() {
+	document.getElementById("seg_sn").innerHTML = "S/N " + getCookie("seg");
+}
+function doOnLoad() {
+	updateContentLocation();
+	updateSegSN();
+	window.setInterval(updateSegSN, 1000);
+}
+</script>
+<link rel="stylesheet" type="text/css" href="../css/srdb.css" /><style type="text/css">
+.done {
+	text-decoration: line-through;
+}
+.inprogress {
+	background-color: #FF0;
+}
+</style>
+<title>SRDB Punch List</title>
+</head>
+
+<body id="g20" onLoad="doOnLoad()" ng-app="srdbProcApp">
+<form id="form1" name="form1" method="post" action="">
+<table width="95%" align="center" border="1" cellspacing="0" cellpadding="5" bordercolor="#DDDDDD">
+	<tr>
+		<td align="center">
+		<table width="95%" border="0" cellspacing="1" cellpadding="2">
+			<tr>
+				<td><span class="title1"><span class="title1_not_bold">
+				<a href="http://www.keck.hawaii.edu/optics/segrepair/dev/db/index.html">Segment Repair</a> 
+				Database</span></span></td>
+				<td align="right">&nbsp;</td>
+				<td align="right" class="title1_not_bold">&nbsp;</td>
+			</tr>
+			<tr>
+				<td align="left" class="modeind"><span class="title1">Punch-List</span></td>
+				<td align="right">&nbsp;</td>
+				<td align="right">&nbsp;</td>
+			</tr>
+		</table></td>
+	</tr>
+	<tr>
+		<td align="center">
+			<table width="95%" border="0" cellspacing="1" cellpadding="2">
+			<tr>
+				<td align="left"><table width="90%" border="0" align="center" cellpadding="2" cellspacing="2">
+					<tr>
+						<td valign="top">1.</td>
+						<td valign="top" class="done"><span class="done">Put figures in nicely formatted pages with caption.</span></td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">2.</td>
+						<td valign="top" class="done">Replace segment s/n selector with segment type selector plus segment s/n selector which only shows segments of selected type.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">3.</td>
+						<td valign="top" class="done">Take segment selector off of procedure page, leave on launch page.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">4.</td>
+						<td valign="top" class="done">Add tech selector to sign-offs.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">5.</td>
+						<td valign="top" class="done">Implement arbitrary type sign-off.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">6.</td>
+						<td valign="top" class="done">Implement sign-off definition interface.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">7.</td>
+						<td valign="top">Handle special characters in sign-off notes (and perhaps elsewhere).</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">8.</td>
+						<td valign="top">Do something about IE incompatibility. </td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">9.</td>
+						<td valign="top"><span  class="done">Implement sign-off summary on procedure pages.</span></td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">10.</td>
+						<td valign="top">Implement non-conformance record interface on procedure pages.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">11.</td>
+						<td valign="top" class="done">Add XML tag for references to general procedures for inclusion of link and list on procedure pages.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">12.</td>
+						<td valign="top">Clean up main page, (re)-impliment database access functions.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">13.</td>
+						<td valign="top" class="done">Some sign-offs can only be signed off by special QA user, affects tech table and sign-offs. Cancelled. </td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">14.</td>
+						<td valign="top" class="done">Implement seg type/sn table interface page.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">15.</td>
+						<td valign="top" class="done">Implement procedures table interface page.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">16.</td>
+						<td valign="top" class="done">Implement tech table interface page.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">17.</td>
+						<td valign="top">Define reports.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">18.</td>
+						<td valign="top" class="done">Update XML tag ref doc re: sign-off definitions.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">19. </td>
+						<td valign="top"><span class="done">Support for &quot;Batch&quot; procedures,</span> including batch completion widget.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">20.</td>
+						<td valign="top" class="done">Expand sign-off definition to allow entry of a single string or numeric value instead of selection from a menu.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">21.</td>
+						<td valign="top" class="done">Define data entry/retrieval for (quantity, batch, location) tables.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">22.</td>
+						<td valign="top" class="done">Define data entry/retrieval for dot weight tables.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">23.</td>
+						<td valign="top"><span class="done">Fix header/body alignment, </span>account for header in links to in-page anchors.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">24.</td>
+						<td valign="top" class="done">Implement alignment fixture ID data entry.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">25.</td>
+						<td valign="top" class="done">Keep historic values in data entry tables but defer UI to historic values.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">26.</td>
+						<td valign="top" class="done">Implement notes section in procedures.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">27.</td>
+						<td valign="top" class="done">Larger fonts for iPad. </td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">28.</td>
+						<td valign="top" class="done">General procedures should open in new window/tab, currently they open in current window/tab.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">29.</td>
+						<td valign="top">Password protect at least database write access.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">30.</td>
+						<td valign="top" class="done">Procedure order specified on Procedure Defination page not working.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">31.</td>
+						<td valign="top" class="done">Add data entry table for Radial Pads.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">32.</td>
+						<td valign="top" class="done">Selectable stylesheets to support multiple selectable font sizes.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">33.</td>
+						<td valign="top">On figure tag, add check for num attribute value is a number.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">34.</td>
+						<td valign="top" class="done">Implement radial hole measurement data entry.</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">&nbsp;</td>
+						<td valign="top">&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">&nbsp;</td>
+						<td valign="top">&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">&nbsp;</td>
+						<td valign="top">&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">&nbsp;</td>
+						<td valign="top">&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">&nbsp;</td>
+						<td valign="top">&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top">&nbsp;</td>
+						<td valign="top">&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+				</table></td></tr></table>
+			</td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

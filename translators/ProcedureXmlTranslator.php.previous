@@ -1,0 +1,166 @@
+<?php
+
+require("../components/ProcedurePComp.php");
+require("../components/Figure.php");
+require("../components/ThreePartSectionSignOff.php");
+require("../components/StepSignOffComp.php");
+
+class ProcedureXmlTranslator {
+	
+	private $srcBuff;
+	private $xml;
+	private $procedure;
+	private $figures = array();
+
+	function __construct($fn) {
+						
+	 	// get the source file and put it in srcBuff
+		$this->srcBuff = file_get_contents($fn);		
+		
+		// replace <html> tags with CDATA tags for html pass-through
+		// this allows html to be interpretted litterally in source files
+		$this->srcBuff = str_replace("<html>", "<![CDATA[", $this->srcBuff);
+		$this->srcBuff = str_replace("</html>", "]]>", $this->srcBuff);
+		
+		// replace <p> tags (which need not be surrounded by <html> tags with CDATA
+		// this is a special case to make it easy to insert paragraph breaks
+		$this->srcBuff = str_replace("<p>", "<![CDATA[<p>]]>", $this->srcBuff);
+	
+		// translate modified XML source into XML data structure
+		$this->xml = simplexml_load_string($this->srcBuff); 
+		
+		// translate figures
+		$this->translateFigures($this->xml->procedure->figure);
+		
+		// translate the procedure
+		$this->translateProcedure();
+
+		//print_r($this->xml);
+	}
+	
+	public function getProcedure() {
+		return($this->procedure);
+	}
+	
+	private function translateProcedure() {
+		$this->procedure = new ProcedurePComp(
+				$this->xml->procedure['num'], 
+				$this->xml->procedure['version'], 
+				$this->xml->procedure['title'],
+				$this->translateEquipment($this->xml->procedure->equipment),
+				$this->translateIntro($this->xml->procedure->intro), 
+				$this->translateSections($this->xml->procedure->section),
+				$this->figures);
+	}
+	
+	private function translateFigures($xml) {
+		for ($i = 0; $i < count($xml); $i++) 
+			$this->figures[(string)($xml[$i]['num'])] = new Figure(
+					(string)($xml[$i]['num']), 
+					(string)($xml[$i]['image']), 
+					(string)($xml[$i]));
+	}
+	
+	private function translateEquipment($xml) {
+		$items = array();
+		for ($i = 0; $i < count($xml); $i++)
+			$items[$i] = new EquipmentListItem($i + 1, $xml[$i]);
+		return(new EquipmentList($items));
+	}
+	
+	private function translateIntro($xml) {
+		if ($xml)  {
+			if ($xml['figure']) 
+				$figure = $this->figures[(string)($xml['figure'])];
+			else
+				$figure = NULL;
+			$intro = new ProcedureIntro($xml, $figure);
+		}
+		else
+			$intro = NULL;
+		return($intro);
+	}
+	
+	private function translateSections($xml) {
+		
+		// array of sections
+		$sections = array();
+		
+		// translate each section
+		for ($isec = 0; $isec < count($xml); $isec++) {
+			
+			// translate section introduction if there is one
+			if ($xml[$isec]->intro) {
+				if ($xml[$isec]->intro['figure']) {
+					$figure = $this->figures[(string)($xml[$isec]->intro['figure'])];
+				}
+				else
+					$figure = NULL;
+				$intro = new ProcedureSectionIntro($xml[$isec]->intro, $figure);
+			}
+			else
+				$intro = NULL;
+				
+			// translate steps
+			$steps = array();
+			for ($istep = 0; $istep < count($xml[$isec]->step); $istep++) {
+				
+				// translate substeps
+				if ($xml[$isec]->step[$istep]->substep) {
+					$substeps = array();
+					for ($isub = 0; $isub < count($xml[$isec]->step[$istep]->substep); $isub++)
+						$substeps[$isub] = new ProcedureSubstep(
+							//$xml[$isec]->step[$istep]->substep[$isub]['num'],
+							chr(ord("a") + $isub),
+							//$xml[$isec]->step[$istep]['num'],
+							$istep + 1,
+							//$xml[$isec]['num'],
+							$isec + 1,
+							$xml[$isec]->step[$istep]->substep[$isub]);
+				}
+				else
+					$substeps = NULL;
+					
+				if ($xml[$isec]->step[$istep]['figure']) 
+					$figure = $this->figures[(string)($xml[$isec]->step[$istep]['figure'])];
+				else
+					$figure = NULL;
+				
+				if ($xml[$isec]->step[$istep]['signoff'] == "true") 
+					$signoff = new StepSignOffComp(
+							$this->xml->procedure['num'], 
+							$xml[$isec]['num'], 
+							$xml[$isec]->step[$istep]['num']);
+				else
+					$signoff = NULL;
+					
+				$steps[$istep] = new ProcedureStep(
+						//$xml[$isec]->step[$istep]['num'], 
+						$istep + 1, // step number
+						//$xml[$isec]['num'], 
+						$isec + 1, // section number 
+						$xml[$isec]->step[$istep], // text
+						$figure, $substeps, $signoff); 
+			}
+			
+			if ($xml[$isec]['signoff'] == "true")
+				$signoff = new ThreePartSectionSignoff($this->xml->procedure['num'], $xml[$isec]['num']);
+			else
+				$signoff = NULL;
+							
+			// create section			
+			$sections[$isec] = new ProcedureSection(
+				//$xml[$isec]['num'], $xml[$isec]['title'], $intro, $steps, $signoff);
+				$isec + 1, $xml[$isec]['title'], $intro, $steps, $signoff);
+
+		}
+		return($sections);
+	}
+}
+	
+if ($_GET['test'] == "ProcedureXmlTranslator") {
+	$translator = new ProcedureXmlTranslator("../content/procedures/segment/SRP107.txt");
+	print($translator->getProcedure()->toHtml());
+}
+
+?>

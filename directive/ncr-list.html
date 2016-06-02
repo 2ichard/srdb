@@ -1,0 +1,80 @@
+<!--
+	ncr-list.html
+
+	Lists all NCR stored in the database
+	Clicking on an NCR row opens the form for that NCR
+-->
+<p>
+<!--
+	Filtering
+-->
+<table style="border:1px solid #000;">
+	<tr>
+		<th>Segment type:
+			<select ng-model="user.seg_type" name="seg_type" id="seg_type" ng-change="getSegSN()">
+				<option value="">All</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+			</select>
+		</th>
+		<th>S/N:
+			<select ng-model="user.seg_sn2" ng-options="c.name for c in seg_sn2" name="seg_sn2" id="seg_sn2">
+				<option value="">All</option>
+			</select>
+		</th>
+		<th>Status:
+			<select ng-model="user.status">
+				<option value="">All</option>
+				<option value="open">open</option>
+				<option value="closed">closed</option>
+			</select>
+		</th>
+		<th>
+			<button ng-click="filterNcrList(user)">Filter List</button>
+		</th>
+	</tr>
+</table>
+<p>
+<!--
+	Table listing NCRs
+-->
+<table style="border:1px solid #000;" cellpadding="10">
+<tr>
+	<th rowspan="2" width=" 20" style="border:1px solid #000;" ng-click="order('ncr')">NCR #</th>
+	<th rowspan="2" width=" 20" style="border:1px solid #000;" ng-click="order('seg_type')">Seg Type</th>
+	<th rowspan="2" width=" 20" style="border:1px solid #000;">Seg S/N</th>
+	<th rowspan="2" width=" 30" style="border:1px solid #000;" ng-click="order('status')">Status</th>
+	<th rowspan="2" width=" 30" style="border:1px solid #000;" ng-click="order('username')">Submitted by</th>
+	<th rowspan="2" width="100" style="border:1px solid #000;">IS_CONDITION</th>
+	<th rowspan="2" width=" 30" style="border:1px solid #000;">Keyword</th>
+	<th rowspan="2" width="100" style="border:1px solid #000;">Disposition</th>
+	<th rowspan="2" width="100" style="border:1px solid #000;">Limited Process</th>
+	<th rowspan="2" width=" 30" style="border:1px solid #000;">LP Submitted by</th>
+	<th colspan="3" style="border:1px solid #000;">Approvals</th>
+</tr>
+<tr>
+	<th width="30" style="border:1px solid #000;">Engineering</th>
+	<th width="30" style="border:1px solid #000;">Quality</th>
+	<th width="30" style="border:1px solid #000;">Rework/Repair</th>
+</tr>
+<tr ng-repeat="ancr in report.entries | orderBy:predicate:reverse" ng-click="editNCR2(ancr.ncr)">
+	<td style="border:1px solid #000;">{{ancr.ncr}}</td>
+	<td style="border:1px solid #000;">{{ancr.seg_type}}</td>
+	<td style="border:1px solid #000;">{{ancr.seg_sn}}</td>
+	<td style="border:1px solid #000;">{{ancr.status}}</td>
+	<td style="border:1px solid #000;">{{ancr.username}}</td>
+	<td style="border:1px solid #000;"><span title="{{ancr.is_condition}}">{{ancr.is_condition_small}}</span></td>
+	<td style="border:1px solid #000;">{{ancr.keyword}}</td>
+	<td style="border:1px solid #000;"><span title="{{ancr.disposition}}">{{ancr.disposition_small}}</span></td>
+	<td style="border:1px solid #000;"><span title="{{ancr.limited_process}}">{{ancr.limited_process_small}}</span></td>
+	<td style="border:1px solid #000;">{{ancr.lpusername}}</td>
+	<td style="border:1px solid #000;">{{ancr.engineering_ap}}</td>
+	<td style="border:1px solid #000;">{{ancr.quality_ap}}</td>
+	<td style="border:1px solid #000;">{{ancr.rework_ap}}</td>
+</tr>
+</table>
+

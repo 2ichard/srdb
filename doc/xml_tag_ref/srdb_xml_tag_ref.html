@@ -1,0 +1,760 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>SRDB XML Tag Reference</title>
+<style type="text/css">
+#grad1
+{
+height:100%;
+background: -webkit-linear-gradient(rgba(0, 0, 0, 1), rgba(0, 256, 0, 1)); /* For Safari */
+background: -o-linear-gradient(red, blue); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(red, blue); /* For Firefox 3.6 to 15 */
+background: linear-gradient(white, sandybrown); /* Standard syntax (must be last) */
+}
+.toc_link {
+	text-decoration: none;
+font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+}
+.toc_link:link {
+	color: #000;
+	text-decoration: none;
+font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	}
+.toc_link:visited {
+	text-decoration: none;
+	color: #000;
+font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	}
+.toc_link:hover {
+	text-decoration: underline;
+	color: #00F;
+font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	}
+.toc_link:active {
+	text-decoration: none;
+	color: #F00;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+}
+.tag_name {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+}
+.attributes_heading {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+}
+.attribute_name {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 16px;
+	font-weight: bold;
+}
+.body_text {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14px;
+	font-weight: normal;
+	text-align: left;
+}
+.literal {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 16px;
+}
+.example_heading {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 16px;
+	font-weight: normal;
+}
+.heading1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	text-align: center;
+}
+.heading2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+}
+
+</style></head>
+
+<body id="grad1">
+<table width="100%" border="0" align="center" cellpadding="5" cellspacing="1">
+	<tr>
+		<td><table width="100%" border="0" cellspacing="1" cellpadding="2">
+			<tr>
+				<td><span class="heading2">Segment Repair Database</span></td>
+				<td align="right"><span class="body_text">
+				<!-- #BeginDate format:Am1m -->November 24, 2014  16:56<!-- #EndDate -->
+- R. Cohen</span></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><span class="heading1">Repair Procedure
+			XML Tag Reference</span></td>
+			</tr>
+		</table>
+			
+			<hr />
+<table width="100%" border="0" align="center" cellpadding="5" cellspacing="1">
+				<tr>
+					<td><table width="80%" border="0" align="left" cellpadding="5" cellspacing="1">
+							<tr>
+								<td colspan="4"><span class="tag_name">Table of Contents</span></td>
+							</tr>
+							<tr>
+								<td width="50">&nbsp;</td>
+								<td><a href="#equipment" class="toc_link">&lt;equipment&gt;</a></td>
+								<td><a href="#section" class="toc_link">&lt;section&gt;</a></td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="50">&nbsp;</td>
+								<td><a href="#figure" class="toc_link">&lt;figure&gt;</a></td>
+								<td><a href="#srdbxml" class="toc_link">&lt;srdbxml&gt;</a></td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td><a href="#general" class="toc_link">&lt;general&gt;</a></td>
+								<td><a href="#step" class="toc_link">&lt;step&gt;</a></td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="50">&nbsp;</td>
+								<td><a href="#html" class="toc_link">&lt;html&gt;</a></td>
+								<td><a href="#substep" class="toc_link">&lt;substep&gt;</a></td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td><a href="#intro" class="toc_link">&lt;intro&gt;</a></td>
+								<td><a href="#changelog">Change Log</a></td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td><a href="#p" class="toc_link">&lt;p&gt;</a></td>
+								<td><a href="#signoffs">Sign-Offs</a></td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td><a href="#procedure" class="toc_link">&lt;procedure&gt;</a></td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+						</table>
+					<p class="attribute_name"></p></td>
+				</tr>
+			</table>
+			<hr />
+			<table width="100%" border="0" align="center" cellpadding="5" cellspacing="1">
+				<tr>
+					<td class="tag_name"><a name="equipment" id="equipment"></a>&lt;equipment&gt;</td>
+				</tr>
+				<tr>
+					<td><p><span class="body_text">The </span><span class="literal">&lt;equipment&gt;</span><span class="body_text"> tag identifies an item to be included in a list of required tools and equipment. Equipment lists are associated with  sections; therefore, </span><span class="literal">&lt;equipment&gt;</span><span class="body_text"> tags must be within </span><span class="literal">&lt;section&gt;&lt;/section&gt;</span><span class="body_text"> tags. A sepearate equpment list will be generated for each section from the </span><span class="literal">&lt;equipment&gt;</span><span class="body_text"> tags within that section.</span></p>
+						<table border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
+							<tr>
+								<td align="center"><img src="equipment_list.png" width="480" height="187" /></td>
+							</tr>
+						</table>
+						<p>Items in the list are numbered automatically according to the order of the &lt;equipment&gt; tags in the XML document. Each equipment list starts from 1.</p>
+					<p>If there are no &lt;equipment&gt; tags in a section then no equipment list will appear in that section.</p></td>
+				</tr>
+				<tr>
+					<td><table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+						<tr>
+							<td colspan="2"><span class="attributes_heading">Attributes</span></td>
+						</tr>
+						<tr>
+							<td width="60" valign="top">&nbsp;</td>
+							<td>None.</td>
+						</tr>
+					</table></td>
+				</tr>
+				<tr>
+					<td><span class="example_heading">Example</span><br />
+						<table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+							<tr>
+								<td class="literal"><p class="body_text">An equipment list containing 5 items:</p>
+									<p>&lt;section title=&quot;Inspect Segment&gt;<br />
+										&lt;intro&gt;In this section, a segment will be inspected.&lt;/intro&gt;<br />
+										&lt;equipment&gt;Standoff posts (30 items, 10 for each whiffletree).&lt;/equipment&gt;<br />
+										&lt;equipment&gt;0.001&quot; shim stock.&lt;/equipment&gt;<br />
+										&lt;equipment&gt;Hot glue removal tool.&lt;/equipment&gt;<br />
+										&lt;equipment&gt;Methanol.&lt;/equipment&gt;<br />
+								&lt;equipment&gt;Cleaning tissue.&lt;/equipment&gt;<br />
+								&lt;step&gt;First step.&lt;/step&gt;<br />
+								&lt;step&gt;Sectond step.&lt;/step&gt;<br />
+								&lt;/section&gt;
+									</p></td>
+							</tr>
+						</table></td>
+				</tr>
+			</table>
+			<hr />
+			<table width="100%" border="0" align="center" cellpadding="5" cellspacing="1">
+				<tr>
+					<td class="tag_name"><a name="figure" id="procedure2"></a>&lt;figure&gt;</td>
+				</tr>
+				<tr>
+					<td><p><span class="body_text">The </span><span class="literal">&lt;figure&gt;</span><span class="body_text"> tag describes a figure but not the location at which it appears in the procedure.</span> </p>
+						<p>Figures are described by a figure number,  image file and an optional caption. </p>
+						<p>In contexts where a thumbnail version of the image is required, it is assumed to have the same file name as the full size image but located in the <span class="literal">thumbnails</span> directory which is immediately subordinate to the <span class="literal">images</span> directory.</p>
+						<p>Figures can appear in the following places:</p>
+						<ul>
+							<li>In the procedure introduction (see <span class="literal">&lt;intro&gt;</span> contained inside a <span class="literal">&lt;procedure&gt;</span>).<br />
+								<br />
+								<table border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
+									<tr>
+										<td align="center"><img src="figure_in_procedure_intro.png" alt="" width="366" height="348" /></td>
+									</tr>
+								</table>
+								<br />
+								<br />
+							</li>
+							<li>In a section introduction (see <span class="literal">&lt;intro&gt;</span> contained inside a <span class="literal">&lt;section&gt;</span>.<br />
+								<br />
+								<table border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
+									<tr>
+										<td align="center"><img src="figure_in_section_intro.png" alt="" width="503" height="123" /></td>
+									</tr>
+								</table>
+								<br />
+							</li>
+							<li>In a step (see <span class="literal">&lt;step&gt;</span>).<br />
+								<br />
+								<table border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
+									<tr>
+										<td align="center"><img src="figure_in_step.png" alt="" width="486" height="66" /></td>
+									</tr>
+								</table>
+								<br />
+							</li>
+						</ul>
+						<p>In addition, links to figures can be included in the body of <span class="literal">&lt;intro&gt;</span>, <span class="literal">&lt;step&gt;</span> and <span class="literal">&lt;substep&gt;</span> tags.</p>
+						<p>No matter how many times a figure, its thumbnail or links to the figure appear in the document, only one <span class="literal">&lt;figure&gt;</span> tag is needed per figure. Image files can be of type JPEG, PNG or GIF. To include a link to a figure in body text, refer to the figure as <span class="literal">Figure <em>num</em></span>, e.g. <span class="literal">Figure 2</span>.					</p>
+						<p>The body of this tag, if included, represents the figure caption (see the example).</p>
+					<p>See also the figure attributes of the <span class="literal">&lt;intro&gt;</span>, <span class="literal">&lt;step&gt;</span> and <span class="literal">&lt;substep&gt;</span> tags.</p></td>
+				</tr>
+				<tr>
+					<td><table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+						<tr>
+							<td colspan="2"><span class="attributes_heading">Attributes</span></td>
+						</tr>
+						<tr>
+							<td width="60" valign="top"><span class="attribute_name">num</span></td>
+							<td>The number of this figure, typically a number, e.g. <span class="literal">num=&quot;1&quot;</span>, but can be any text string, e.g. <span class="literal">num=&quot;14-a&quot;</span>. The figure number is used to label figures in the document and to reference figures in &lt;intro&gt; and &lt;step&gt; tags and in links to figures.</td>
+						</tr>
+						<tr>
+							<td width="60" valign="top" class="attribute_name">image</td>
+							<td>The name of the image file for this figure. Image files are stored in a standard location so image file names are not proceeded by a path, e.g. <span class="literal">image=&quot;WT_transportation_restraints.jpg&quot;</span>.</td>
+						</tr>
+					</table></td>
+				</tr>
+				<tr>
+					<td><span class="example_heading">Example</span><br />
+						<table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+							<tr>
+								<td class="literal"><p class="body_text">A figure with a caption but no thumbnail which therefore can only be used in the procedure introduction or referred to in textual links:</p>
+									<p>&lt;figure num=&quot;1&quot; image=&quot;whiffletree_color.png&quot;&gt;<br />
+										Whiffletree color layout for two segment types.<br />
+									&lt;/figure&gt;</p>
+									<span class="body_text">A figure with a thumbnail and a caption which therefore can be used anywhere:</span>
+									<p>&lt;figure num=&quot;2&quot; image=&quot;WT_transportation_restraints.jpg&quot; thumbnail=&quot;WT_transportation_restraints_120.jpg&quot;&gt;<br />
+										ASCII Import GUI: Importing pointing file for whiffletree.<br />
+								&lt;/figure&gt;</p>
+								<p class="body_text">A reference to a figure in the body of a &lt;step&gt;:</p>
+								<p>&lt;step&gt;<br />
+									Place the laser tracker on the kinematic adapter in the segment central hole (Position B in Figure 1).
+										<br />
+										&lt;/step&gt;
+								</p></td>
+							</tr>
+						</table></td>
+				</tr>
+			</table>
+			<hr />
+			<table width="100%" border="0" align="center" cellpadding="5" cellspacing="1">
+				<tr>
+					<td class="tag_name"><a name="general" id="html3"></a>&lt;general&gt;</td>
+				</tr>
+				<tr>
+					<td align="left"><p><span class="body_text">The </span><span class="literal">&lt;general&gt;</span><span class="body_text"> tag identifes a <em>general</em> procedure to be included as a reference in a <em>segment</em> procedure. The </span><span class="attribute_name">num</span><span class="body_text"> attribute specifies the procedure number to be referenced (e.g. </span><span class="literal">SRP601</span><span class="body_text">) and is required. </span></p>
+						<p><span class="body_text">This tag contains no text between the opening and closing tags.</span> The procedure title used in the list of general procedures (below) are obtained dynamically from the database.</p>
+					<p>A list of referenced general procedures appears toward the top of the segment procedure:</p>
+					<table border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
+						<tr>
+							<td align="center"><img src="general_procedure_list.png" alt="" width="599" height="76" /></td>
+						</tr>
+					</table>
+					<p>Each item in the list is a link to the general procedure.</p>
+					<p>In addition,  references to the general procedure in the present procedure (e.g. SRP601) are replaced with links to the general procedure.</p>
+					<p>Any number of <span class="literal">&lt;general&gt;</span> tags may appear in the document but they must be within the main <span class="literal">&lt;procedure&gt;</span> tag and outside any <span class="literal">&lt;section&gt;</span> or <span class="literal">&lt;intro&gt;</span> tags.</p></td>
+				</tr>
+				<tr>
+					<td><table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+						<tr>
+							<td colspan="2"><span class="attributes_heading">Attributes</span></td>
+						</tr>
+						<tr>
+							<td width="60" class="attribute_name">num</td>
+							<td><span class="attribute_name"> <span class="body_text">The number of the general procedure, e.g. </span></span><span class="literal">SRP601</span></td>
+						</tr>
+					</table></td>
+				</tr>
+				<tr>
+					<td><span class="example_heading">Example</span><br />
+						<table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+							<tr>
+								<td class="literal"><p class="literal">&lt;general num=&quot;SRP601&quot;&gt;&lt;/general&gt;<br />
+									&lt;general num=&quot;SRP604&quot;&gt;&lt;/general&gt;
+								</p></td>
+							</tr>
+						</table></td>
+				</tr>
+			</table>
+			<hr />
+			<table width="100%" border="0" align="center" cellpadding="5" cellspacing="1">
+				<tr>
+					<td class="tag_name"><a name="html" id="html"></a>&lt;html&gt;</td>
+						
+				</tr>
+				<tr>
+					<td align="left"><span class="body_text">The </span><span class="literal">&lt;html&gt;</span><span class="body_text"> tag delineates a section of body text that should be interpreted as literal HTML. Within an </span><span class="literal">&lt;HTML&gt;</span><span class="body_text"> tag body, standard HTML tags are used in their normal sense and are passed directly to the browser without further processing by the SRDB system. </span><span class="literal">&lt;HTML&gt;</span><span class="body_text"> elements can be used in the body of </span><span class="literal">&lt;intro&gt;</span><span class="body_text">, </span><span class="literal">&lt;section&gt;</span><span class="body_text">, </span><span class="literal">&lt;step&gt;</span><span class="body_text"> and </span><span class="literal">&lt;substep&gt;</span><span class="body_text"> tags.</span></td>
+				</tr>
+				<tr>
+					<td><table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+						<tr>
+							<td colspan="2"><span class="attributes_heading">Attributes</span></td>
+						</tr>
+						<tr>
+							<td width="60">&nbsp;</td>
+							<td><span class="attribute_name"> <span class="body_text">None.</span></span><span class="attribute_name"><span class="body_text"></span></span></td>
+						</tr>
+					</table></td>
+				</tr>
+				<tr>
+					<td><span class="example_heading">Example</span><br />
+						<table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+							<tr>
+								<td class="literal"><span class="body_text">Inserts a table:</span>
+									<p>&lt;html&gt;<br />
+										&lt;table align=&quot;center&quot;&gt;<br />
+										&lt;tr&gt;&lt;td&gt;Segment Types 1, 3, 5, 6&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;Red1, Blue1, Green1&lt;/td&gt;&lt;/tr&gt;<br />
+										&lt;tr&gt;&lt;td&gt;Segment Types 2 and 4&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;Red2, Blue2, Green2&lt;/td&gt;&lt;/tr&gt;<br />
+										&lt;/table&gt;<br />
+								&lt;/html&gt;</p></td>
+							</tr>
+					</table></td>
+				</tr>
+			</table>
+			<hr />
+			<table width="100%" border="0" align="center" cellpadding="5" cellspacing="1">
+				<tr>
+					<td class="tag_name"><a name="intro" id="html2"></a>&lt;intro&gt;</td>
+				</tr>
+				<tr>
+					<td><p><span class="body_text">An </span><span class="literal">&lt;intro&gt;</span><span class="body_text"> element represents a procedure introduction if it is in the body of a </span><span class="literal">&lt;procedure&gt;</span><span class="body_text"> element or a section introduction if it is in the the body of a </span><span class="literal">&lt;section&gt;</span><span class="body_text"> element. </span><span class="literal">&lt;intro&gt;</span><span class="body_text"> elements are used to provide introductory or background information related to the procedure as a whole or to section of a procedure.  &lt;intro&gt; elements consist of text and an optional figure. The text is body of the tag and the figure is specified as an attribute. </span></p>
+					<p><span class="body_text">A figure in a procedure introduction is included in-line as a full-size image. A figure in a section introduction is included as a thumbnail which links to the full-size image displayed in a new tab or window.</span></p></td>
+				</tr>
+				<tr>
+					<td><table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+						<tr>
+							<td colspan="2"><span class="attributes_heading">Attributes</span></td>
+						</tr>
+						<tr>
+							<td width="60" valign="top"><span class="attribute_name">figure</span></td>
+							<td>In a procedure introduction the figure is displayed full size at the end of the text, in a section introduction the figure is displayed as a thumbnail to the right of the text and links to the full-size image.</td>
+						</tr>
+					</table></td>
+				</tr>
+				<tr>
+					<td><span class="example_heading">Example</span><br />
+						<table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+							<tr>
+								<td class="literal">&lt;intro figure=&quot;2&quot;&gt;<br />
+									The segment is delivered from the summit with the radial post removed and all three whiffletrees restrained. Refer to Figure 2 which shows a whiffletree with mounted restraints.<br />
+								&lt;/intro&gt;</td>
+							</tr>
+						</table></td>
+				</tr>
+			</table>
+			<hr />
+			<table width="100%" border="0" align="center" cellpadding="5" cellspacing="1">
+				<tr>
+					<td class="tag_name"><a name="p" id="p"></a>&lt;p&gt;</td>
+				</tr>
+				<tr>
+					<td><span class="body_text">The </span><span class="literal">&lt;p&gt;</span><span class="body_text"> element represent a paragraph break and may be included in the body of an </span><span class="literal">&lt;intro&gt;</span><span class="body_text">, </span><span class="literal">&lt;step&gt;</span><span class="body_text"> or </span><span class="literal">&lt;substep&gt; </span><span class="body_text">tag. Note that </span><span class="literal">&lt;p&gt;</span><span class="body_text"> is the same as </span><span class="literal">&lt;html&gt;&lt;p&gt;&lt;/html&gt;</span><span class="body_text">.</span></td>
+				</tr>
+				<tr>
+					<td><table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+						<tr>
+							<td colspan="2"><span class="attributes_heading">Attributes</span></td>
+						</tr>
+						<tr>
+							<td width="60">&nbsp;</td>
+							<td>None.</td>
+						</tr>
+					</table></td>
+				</tr>
+				<tr>
+					<td><span class="example_heading">Example</span><br />
+						<table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+							<tr>
+								<td class="literal">&lt;intro&gt;<br />
+									This is the first paragraph.<br />
+									&lt;p&gt;<br />
+									And this is the second paragraph.<br />
+								&lt;/intro&gt;</td>
+							</tr>
+						</table></td>
+				</tr>
+			</table>
+			<hr />
+			<table width="100%" border="0" align="center" cellpadding="5" cellspacing="1">
+				<tr>
+					<td class="tag_name"><a name="procedure" id="procedure"></a>&lt;procedure&gt;</td>
+				</tr>
+				<tr>
+					<td><span class="body_text">The </span><span class="literal">&lt;procedure&gt;</span><span class="body_text"> element represent an SRDB procedure. There is only one </span><span class="literal">&lt;procedure&gt;</span><span class="body_text"> element in a document. </span></td>
+				</tr>
+				<tr>
+					<td><table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+						<tr>
+							<td colspan="2"><span class="attributes_heading">Attributes</span></td>
+						</tr>
+						<tr>
+							<td width="60"><span class="attribute_name">id</span></td>
+							<td><span class="attribute_name"> <span class="body_text">Identifier for this procedure, e.g. </span></span><span class="literal">SRB1234</span><span class="attribute_name"><span class="body_text">. </span></span></td>
+						</tr>
+						<tr>
+							<td width="60" class="attribute_name">title</td>
+							<td>Title of procedure.</td>
+						</tr>
+						<tr>
+							<td width="60" class="attribute_name">version</td>
+							<td>Version of procedure.</td>
+						</tr>
+						<tr>
+							<td width="60" class="attribute_name">type</td>
+							<td>Type, <span class="literal">segment</span> or <span class="literal">general</span>.</td>
+						</tr>
+					</table></td>
+				</tr>
+				<tr>
+					<td><span class="example_heading">Example</span><br />
+						<table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+							<tr>
+								<td class="literal">&lt;srdbxml&gt;<br />
+									<br />
+									&lt;procedure num=&quot;SRDB0000&quot; version=&quot;1.0&quot; title=&quot;Whiffletree Measurement with Laser Tracker&quot;&gt;<br />
+									<br />
+									&lt;figure num=&quot;1&quot; image=&quot;whiffletree_color.png&quot;&gt;Whiffletree color layout for two segment types.&lt;/figure&gt;<br />
+									<br />
+&lt;equipment&gt;0.5&quot; SMR brackets (42 items, 14 for each whiffletree).&lt;/equipment&gt;<br />
+<br />
+<p>&lt;intro figure=&quot;1&quot;&gt;Donec at ultrices velit.&lt;/intro&gt;</p>
+<p>&lt;section title=&quot;Setup Laser Tracker&quot; signoff=&quot;true&quot;&gt;<br />
+	...<br />
+	body of section<br />
+	...</p>
+<p>&lt;/section&gt;<br />
+	&lt;/procedure&gt;<br />
+	&lt;/srdbxml&gt;</p></td>
+							</tr>
+						</table></td>
+				</tr>
+			</table>
+			<hr />
+			<table width="100%" border="0" align="center" cellpadding="5" cellspacing="1">
+				<tr>
+					<td class="tag_name"><a name="section" id="section"></a>&lt;section&gt;</td>
+				</tr>
+				<tr>
+					<td class="tag_name"><span class="body_text">Represents a section in a procedure. A </span><span class="literal">&lt;section&gt;</span><span class="body_text"> may contain an optional </span><span class="literal">&lt;intro&gt;</span><span class="body_text"> and one or more </span><span class="literal">&lt;step&gt;</span><span class="body_text"> elements. Sections are automatically numbered according to the order in which they appear in the XML document.</span></td>
+				</tr>
+				<tr>
+					<td><table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+						<tr>
+							<td colspan="2"><span class="attributes_heading">Attributes</span></td>
+						</tr>
+						<tr>
+							<td width="60" class="attribute_name">title</td>
+							<td>The title of this section.</td>
+						</tr>
+						<tr>
+							<td width="60" valign="top" class="attribute_name">signoff</td>
+							<td>If <span class="literal">true</span> or <span class="literal">section</span> (e.g. <span class="literal">signoff=&quot;true&quot;</span><span class="body_text"> or </span><span class="literal">signoff=&quot;true&quot;</span>) then a section sign-off widget is included at the end of this section, if <span class="literal">false</span> or omitted then no  sign-off widget is included. No other sign-off type is allowed in the section tag. See <a href="#signoffs">Sign-Offs</a> for more information.</td>
+						</tr>
+					</table></td>
+				</tr>
+				<tr>
+					<td><span class="example_heading">Example</span><br />
+						<table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+							<tr>
+								<td class="literal">&lt;section title=&quot;Setup Laser Tracker&quot; signoff=&quot;true&quot;&gt;
+									<p>&lt;intro&gt;<br />
+										This is the introduction to section 1 which does not have a figure.<br />
+									&lt;/intro&gt;</p>
+									<p>&lt;step&gt;<br />
+										Laser Tracker positioned on the kinematic adapter in the segment central hole (Position B in Figure 2).<br />
+								&lt;/step&gt;</p>
+								<p>&lt;step&gt;<br />
+									Vivamus pulvinar orci ligula, vel laoreet neque convallis lacinia.<br />
+								&lt;/step&gt;</p>
+								<p>&lt;/section&gt;</p></td>
+							</tr>
+						</table></td>
+				</tr>
+			</table>
+			<hr />
+			<table width="100%" border="0" align="center" cellpadding="5" cellspacing="1">
+				<tr>
+					<td class="tag_name"><a name="srdbxml" id="srdbxml"></a>&lt;srdbxml&gt;</td>
+				</tr>
+				<tr>
+					<td>Identifies the document as SRDB XML procedure description. </td>
+				</tr>
+				<tr>
+					<td><table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+						<tr>
+							<td colspan="2"><span class="attributes_heading">Attributes</span></td>
+						</tr>
+						<tr>
+							<td width="60">&nbsp;</td>
+							<td>None.</td>
+						</tr>
+					</table></td>
+				</tr>
+				<tr>
+					<td><span class="example_heading">Example</span><br />
+						<table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+							<tr>
+								<td class="literal">&lt;srdbxml&gt;<br />
+									&lt;procedure num=&quot;SRDB0000&quot; version=&quot;1.0&quot; title=&quot;Whiffletree Measurement with Laser Tracker&quot;&gt;<br />
+									...<br />
+									body of procedure<br />
+									...<br />
+									&lt;/procedure&gt;<br />
+									&lt;/srdbxml&gt; </td>
+							</tr>
+						</table></td>
+				</tr>
+			</table>
+			<hr />
+			<table width="100%" border="0" align="center" cellpadding="5" cellspacing="1">
+				<tr>
+					<td class="tag_name"><a name="step" id="step"></a>&lt;step&gt;</td>
+				</tr>
+				<tr>
+					<td><p class="body_text">A step in a procedure section. Steps may only appear in sections. Steps may but need not include sub-steps. The body of this element contains the instructions for this step. Steps are numbered automatically according to the order in which they appear in the XML document.</p>
+					<p class="body_text">If a step has substeps the steps may be made collapsable by setting the <span class="literal">collapsable</span> attribute to <span class="literal">true</span>.  The figures below show a step with substeps expanded and then collapsed.</p>
+					<table border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
+						<tr>
+							<td align="center"><img src="substeps_expanded.png" alt="" width="489" height="286" /></td>
+						</tr>
+					</table>
+					<br />
+					<br />
+					<table border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
+						<tr>
+							<td align="center"><img src="substeps_collapsed.png" alt="" width="484" height="99" /></td>
+						</tr>
+					</table>
+					<p class="body_text">If <span class="literal">collapsable</span> is set to <span class="literal">false</span> then the substeps are shown expanded, the collapse control is not available and the substeps cannot be collapsed.</p>
+					<p class="body_text">If <span class="literal">collapsible</span> is set to <span class="literal">true</span> then the initial state of the substeps is determined by the <span class="literal">collapsed</span> attribute. If <span class="literal">collapsed</span> is set to <span class="literal">true</span> then the substeps are initially show collapsed and the user can expand them by clicking on the Expand Substeps control.					</p></td>
+				</tr>
+				<tr>
+					<td><table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+						<tr>
+							<td colspan="2"><span class="attributes_heading">Attributes</span></td>
+						</tr>
+						<tr>
+							<td width="60" valign="top" class="attribute_name">signoff</td>
+							<td>If <span class="literal">true</span> (e.g. <span class="literal">signoff=&quot;true&quot;</span>) then a step sign-off widget is included at the end of this step, if <span class="literal">false</span> or omitted then no step sign-off widget is included. If signoff is set to a number, e.g. <span class="literal">signoff=&quot;3&quot;</span>, then an n-part signoff is included. </td>
+						</tr>
+						<tr valign="top">
+							<td width="60" class="attribute_name">figure</td>
+							<td>Number of figure to be included as a thumbnail which links to a full-size image in a separate window or tab.</td>
+						</tr>
+						<tr valign="top">
+							<td class="attribute_name">collapsed</td>
+							<td>If <span class="literal">true</span> then substeps, if any, are initially shown collapsed, i.e. not visible. The default value is <span class="literal">false</span>, i.e. substeps, if any are shown.</td>
+						</tr>
+						<tr valign="top">
+							<td class="attribute_name">collapsable</td>
+							<td>If <span class="literal">true</span>, and if there are substeps, then controls are made available for this step to expand and collapse the substeps. If <span class="literal">false</span> then substep expand and collapse controls are not visible and the initial collaps state cannot be changed.</td>
+						</tr>
+					</table></td>
+				</tr>
+				<tr>
+					<td><span class="example_heading">Example</span><br />
+						<table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+							<tr>
+								<td class="literal"><p>&lt;step figure=&quot;4&quot; signoff=&quot;3&quot;&gt;<br />
+									Import three ASCII pointing files according to segment type 1 or 2 as shown in the screenshot (Figure 4).<br />
+									&lt;/step&gt;
+								</p>
+								<p>In this example, there are two substeps, the substeps are shown and the user cannot hide them:</p>
+								<p>&lt;step collapsed=&quot;false&quot; collapsable=&quot;false&quot;&gt;<br />
+								This is the text that describes the step.<br />
+								&lt;substep&gt;This is the first substep&gt;&lt;/substep&gt;<br />
+								&lt;substep&gt;This is the second substep&gt;&lt;/substep&gt;<br />
+								&lt;/step&gt;
+								</p>
+								<p>In this example, there are two substeps, the substeps are initially collapsed (hidden) but controls are made available to expand (show) the substeps:</p>
+								<p>&lt;step collapsed=&quot;true&quot; collapsable=&quot;true&quot;&gt;<br />
+									This is the text that describes the step.<br />
+	&lt;substep&gt;This is the first substep&gt;&lt;/substep&gt;<br />
+	&lt;substep&gt;This is the second substep&gt;&lt;/substep&gt;<br />
+	&lt;/step&gt;</p></td>
+							</tr>
+						</table></td>
+				</tr>
+			</table>
+			<hr />
+			<table width="100%" border="0" align="center" cellpadding="5" cellspacing="1">
+				<tr>
+					<td class="tag_name"><a name="substep" id="procedure5"></a>&lt;substep&gt;</td>
+				</tr>
+				<tr>
+					<td><span class="body_text">A substep within a step. Substeps are numbered automatically according to the order in which they appear in the XML document.</span></td>
+				</tr>
+				<tr>
+					<td><table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+						<tr>
+							<td colspan="2"><span class="attributes_heading">Attributes</span></td>
+						</tr>
+						<tr>
+							<td width="60">&nbsp;</td>
+							<td>None.</td>
+						</tr>
+					</table></td>
+				</tr>
+				<tr>
+					<td><span class="example_heading">Example</span><br />
+						<table width="95%" border="0" align="right" cellpadding="5" cellspacing="1">
+							<tr>
+								<td class="literal">&lt;step&gt;<br />
+									Aliquam nunc nibh, iaculis et purus convallis, pretium egestas odio. <p></p>
+									<p>&lt;substep&gt;<br />
+										Pellentesque quis quam semper, eleifend arcu at, condimentum tortor.<br />
+									&lt;/substep&gt;</p>
+									<p>&lt;substep&gt;<br />
+										Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.<br />
+								&lt;/substep&gt;</p>
+								<p>&lt;/step&gt;</p></td>
+							</tr>
+						</table></td>
+				</tr>
+			</table>
+			<hr />
+			<hr />
+			<table width="100%" border="0" align="center" cellpadding="5" cellspacing="1">
+				
+				<tr>
+					<td><p>Sign-offs are checkpoints where the technician certifies that a step or section is complete and in some cases records information like the identity of a fixture used to complete a certain step or the lot number of an adhesive used in a step. When a sign-off is signed-off, information associated with the sign-off is stored in the database. The state and data associated with a sign-off for the currently selected segment are shown on the procedure pages. </p>
+					<p>There are two predefined types of sign-offs--step and section signoffs--and an unlimited number of custom sign-offs. Step sign-offs are used to record completion of a step when no special data is required to be recorded with the step. Step sign-offs appear at the end of a step. Before the step is signed-off, it appears as in the figure below, with a greenish top row and a reddish bottom row.</p>
+									<table border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
+	<tr>
+					<td class="tag_name"><a name="signoffs" id="procedure3"></a>Sign-Offs</td>
+				</tr>
+				<tr bordercolor="#CCCCCC">
+					<td align="center"><img src="step_signoff.png" alt="" /></td>
+				</tr></table>
+					<p>After the technician has signed-off on the step, the sign-off appears as in the next figure with greenish top and bottom rows.</p>
+					<table border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
+						<tr>
+							<td align="center"><img src="step_signoff_signedoff.png" alt="" /></td>
+						</tr>
+					</table>
+					<p>To include a step sign-off in a step add the signoff attirbute to the step tag, e.g. <span class="literal">&lt;step signoff=&quot;true&quot;&gt;</span> or <span class="literal">&lt;step signoff=&quot;step&quot;&gt;</span>. </p>
+					<p>Section sign-offs are similar to step sign-offs but appear at the end of a section. Use the signoff attribute in the section tag to include a section sign-off, e.g. <span class="literal">&lt;section signoff=&quot;true&quot;&gt;</span> or <span class="literal">&lt;section signoff=&quot;section&quot;&gt;</span>. </p>
+					<p>Custom sign-offs can be defined on the Sign-Off Definition page.  </p>
+					<table border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
+						<tr>
+							<td align="center"><img src="signoff_def.png" width="900" height="554" /></td></tr></table>
+					<p>Type is the identifier which will be used in the XML tag, e.g. &lt;step signoff=&quot;inner_fixture&quot;&gt;, and should contain no spaces or special characters.  Title is the name of the sign-off that will appear in the upper left corner of the signoff widget on the procedure page. Label will appear just before the drop down menu of choices. Choices are the menu items from which the technician must select a value when signing-off on the step and is a comma-separated list of strings.</p>
+							</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+			<hr />
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p><a name="changelog" id="changelog"></a><span class="heading2">Change Log</span></p>
+<table width="90%" border="0" align="center" cellpadding="2" cellspacing="1">
+	<tr>
+		<td width="17%">Date</td>
+		<td width="21%">Tag(s) affected</td>
+		<td width="62%">Description</td>
+	</tr>
+	<tr valign="top">
+		<td>Nov. 18, 2014</td>
+		<td>&lt;step&gt;, &lt;section&gt;</td>
+		<td>Add description of step, section and custom sign-offs.</td>
+	</tr>
+	<tr valign="top">
+		<td>Sept. 30, 2014</td>
+		<td>&lt;figure&gt;</td>
+		<td>The thumbnail attribute is no longer supported. Thumbnail files are assumed to have the same file name as the main image file in the thumbnails directory which is immediately subordinate to the images directory.</td>
+	</tr>
+	<tr valign="top">
+		<td>Oct. 2, 2014</td>
+		<td>&lt;step&gt;</td>
+		<td>Added collapsed and collapsable attributes, steps are now numbered automatically.</td>
+	</tr>
+	<tr valign="top">
+		<td>Oct. 3, 2014</td>
+		<td>&lt;equipment&gt;</td>
+		<td>Equipment lists are now associated with sections and are numbered automatically.</td>
+	</tr>
+	<tr valign="top">
+		<td>Oct. 3, 2014</td>
+		<td>&lt;section&gt;</td>
+		<td>Sections are now numbered automatically.</td>
+	</tr>
+	<tr valign="top">
+		<td>Oct. 3, 2014</td>
+		<td>&lt;substep&gt;</td>
+		<td>Substeps are now numbered automatically.</td>
+	</tr>
+	<tr valign="top">
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr valign="top">
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr valign="top">
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr valign="top">
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p></td>
+	</tr>
+</table>
+</body>
+</html>

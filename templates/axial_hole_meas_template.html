@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="../script/util.js"></script>
+<script src="../script/angular.js"></script>
+<script src="../script/angular-cookies.js"></script>
+<script src="../script/axialHoleMeasController.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../css/srdb.css" />
+<title>Axial Hole Measurements</title>
+</head>
+
+<body id="deeppinkgrad" ng-app="srdbAxialHoleMeasApp">
+<form id="form1" name="form1" method="post" action="">
+<table width="95%" align="center" border="1" cellspacing="0" cellpadding="5" bordercolor="#DDDDDD" 
+		ng-controller="AxialHoleMeasCtrl"  ng-init="init('%%proc%%', '%%ver%%', '%%sec%%', '%%step%%')">
+	<tr>
+		<td align="center"><table width="95%" border="0" cellspacing="2" cellpadding="2">
+			<tr>
+				<td nowrap="nowrap"><table border="0" cellspacing="2" cellpadding="2">
+					<tr>
+						<td nowrap="nowrap" colspan="2"><span class="title1_not_bold"> 
+						 <a href="../index.html"> Segment Repair Database</a></span></td>
+					</tr>
+					<tr>
+						<td nowrap="nowrap"><span class="modeind"><span class="title1">
+						Axial Hole Measurements</span></span></td>
+						<td valign="middle" nowrap="nowrap" class="title2">&nbsp;</td>
+					</tr>
+				</table></td>
+				<td nowrap="nowrap" align="right"><table border="0" cellspacing="2" cellpadding="2">
+					<tr>
+						<td align="left" nowrap="nowrap"><span class="title1"><span class="title1_not_bold">Segment</span> <span class="title1_italic">{{seg}}</span></span></td>
+						
+						<td width="50" align="right" class="title1">&nbsp;</td>
+						</tr>
+					<tr>
+						<td colspan="2" align="right" nowrap="nowrap" class="title1_not_bold">Procedure <span class="title1">%%proc%%</span>, Section <span class="title1">%%sec%%</span>, Step <span class="title1">%%step%%</span></td>
+						</tr>
+				</table></td>
+			</tr>
+		</table></td>
+	</tr>
+	<tr>
+		<td align="center">
+		
+<!-- -->
+		
+<br />
+						
+<table cellspacing="6">
+	<tr>
+	<td valign="top">
+	
+		<!----------------------->
+		<!-- grind depth table -->
+		<!----------------------->
+
+		<table cellpadding="2" cellspacing="0" border="1" bordercolor="#BBBBBB">
+		<tr><td colspan="5" align="center">Completed During SRP111 - all data in inches</td></tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td align="center" class="figure_caption_ul">A</td>
+			<td align="center" class="figure_caption_ul">B</td>
+			<td align="center" nowrap="nowrap"><span class="figure_caption_ul">C</span> = 
+				<span class="figure_caption_ul">B</span> - <span class="figure_caption_ul">A</span></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr valign="bottom">
+			<td height="60" align="center" valign="middle" nowrap="nowrap">Axial Hole <br />
+				Number</td>
+			<td height="60" align="center" nowrap="nowrap">Pre-Grind Depth <br />
+				(Caliper)<br />
+				<span class="kindoftiny">
+					{{depthRange.preMin | number : 3}} to {{depthRange.preMax | number : 3}}</span></td>
+			<td height="60" align="center" nowrap="nowrap">Post-Grind Depth<br />
+				(Caliper)<br />
+				<span class="kindoftiny">
+					{{depthRange.postMin | number : 3}} to {{depthRange.postMax | number : 3}}</span></td>
+			<td height="60" align="center" nowrap="nowrap">Calc. Amount (Depth)<br />
+				of Glass Removed<br />
+				(Reqt: 0.07 to 0.09)</td>
+			<td height="60" align="center"></td>
+
+		</tr>
+		<tr ng-repeat="hole in holeNumbers">
+			
+			<!-- hole number -->
+			<td align="center">{{hole}}</td>
+			
+			<!-- pre-grind depth -->
+			<td ng-show="depthInedit[hole]" align="center">
+				<input size="8" ng-model="depth[hole].pre_grind" />
+				<br /><span class="kindoftiny">
+				{{depthRange.preMin | number : 3}} to {{depthRange.preMax | number : 3}}</span></td>
+			<td ng-hide="depthInedit[hole]" ng-click="edit('depth', hole)" align="center">
+				{{depth[hole].pre_grind == '' ? 'null' : depth[hole].pre_grind | number : 3}}</td>		
+							
+			<!-- post-grind depth -->
+			<td ng-show="depthInedit[hole]" align="center">
+				<input size="8" ng-model="depth[hole].post_grind" />
+				<br /><span class="kindoftiny">
+				{{depthRange.postMin | number : 3}} to {{depthRange.postMax | number : 3}}</span></td>
+			<td ng-hide="depthInedit[hole]" ng-click="edit('depth', hole)" align="center">
+				{{depth[hole].post_grind == '' ? 'null' : depth[hole].post_grind | number : 3}}</td>
+			
+			<td align="center">
+				{{depth[hole].removed == '' ? 'null' : depth[hole].removed | number : 3}}</td>
+						
+			<!-- buttons -->
+			<td align="center" ng-hide="depthInedit[hole]" nowrap valign="top">
+					<button ng-click="edit('depth', hole)">Edit</button></td>
+			<td align="center" ng-show="depthInedit[hole]" nowrap valign="top">
+					<button ng-click="saveDepth(hole)">Save</button>
+					<button ng-click="cancel('depth', hole)">Cancel</button></td>					
+			</tr>
+		</table>
+	</td>
+	
+	<td valign="top">
+	
+		<!------------------------->
+		<!-- etch diameter table -->
+		<!------------------------->
+
+		<table cellpadding="2" cellspacing="0" border="1" bordercolor="#BBBBBB">
+		<tr>
+			<td colspan="5" align="center">Completed During SRP112 - all data in inches</td></tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td align="center" class="figure_caption_ul">D</td>
+			<td align="center" class="figure_caption_ul">E</td>
+			<td align="center" nowrap="nowrap"><span class="figure_caption_ul">F</span> = 
+				<span class="figure_caption_ul">E</span> - <span class="figure_caption_ul">D</span></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr valign="top">
+			<td height="60" align="center" valign="middle" nowrap="nowrap">Axial Hole <br />
+				Number</td>
+			<td height="60" align="center" valign="bottom" nowrap="nowrap">Pre-Etch Dia. <br />
+				(ID mic)<br />
+				<span class="kindoftiny">{{diaRange.preMin | number : 5}} to {{diaRange.preMax | number : 5}}</span></td>
+			<td height="60" align="center" valign="bottom" nowrap="nowrap">Post-Etch Dia.<br />
+				(ID mic)<br />
+				<span class="kindoftiny">{{diaRange.postMin | number : 5}} to {{diaRange.postMax | number : 5}}</span></td>
+			<td height="60" align="center" valign="middle" nowrap="nowrap">Calc. Etch Amount<br />
+				(Reqt: &ge; 0.00512</td>
+			<td height="60" align="center"></td>
+
+		</tr>
+		<tr ng-repeat="hole in holeNumbers">
+			<td align="center">{{hole}}</td>
+			
+			<!-- pre-etch diameter -->
+			<td ng-show="diaInedit[hole]" align="center">
+				<input size="8" ng-model="dia[hole].pre_etch" />
+				<br /><span class="kindoftiny">
+				{{diaRange.preMin | number : 5}} to {{diaRange.preMax | number : 5}}</span></td>
+			<td ng-hide="diaInedit[hole]" ng-click="edit('diameter', hole)" align="center">
+				{{dia[hole].pre_etch == '' ? 'null' : dia[hole].pre_etch | number : 5}}</td>		
+							
+			<!-- post-etch diameter -->
+			<td ng-show="diaInedit[hole]" align="center">
+				<input size="8" ng-model="dia[hole].post_etch" />
+				<br /><span class="kindoftiny">
+				{{diaRange.postMin | number : 5}} to {{diaRange.postMax | number : 5}}</span></td>
+			<td ng-hide="diaInedit[hole]" ng-click="edit('diameter', hole)" align="center">
+				{{dia[hole].post_etch == '' ? 'null' : dia[hole].post_etch | number : 5}}</td>			
+				
+			<!-- etch amount -->	
+			<td ng-click="edit('diameter', hole)" align="center">
+				{{dia[hole].etched == '' ? 'null' : dia[hole].etched | number : 5}}</td>
+							
+			<!-- buttons -->
+			<td align="center" ng-hide="diaInedit[hole]" nowrap valign="top">
+					<button ng-click="edit('diameter', hole)">Edit</button></td>
+			<td align="center" ng-show="diaInedit[hole]" nowrap valign="top">
+					<button ng-click="saveDia(hole)">Save</button>
+					<button ng-click="cancel('diameter', hole)">Cancel</button></td>						
+		</tr></table>
+	</td>
+	</tr>
+</table>
+		
+<!-- -->		
+		
+		</td></tr>
+			
+</table></form>
+</body>
+</html>

@@ -1,0 +1,92 @@
+
+<!-- procedure step template -->
+<tr>
+	<td width="15" valign="top">
+	<a name="step_%%sec_num%%_%%step_num%%" id="step_sec_num_step_num"></a>
+	<span class="body_text">%%sec_num%%.%%step_num%%</span></td>
+	
+	<td class="body_text" valign="top" colspan="%%colspan%%">
+	
+		%%text%% 
+	
+		%%data_entry%%
+		
+		<a class="collapselink" id="collapse_control_%%sec_num%%_%%step_num%%" 
+		href="javascript:setCollapsed_%%sec_num%%_%%step_num%%(true)">
+		Collapse Substeps</a>
+		
+		<a class="collapselink" id="expand_control_%%sec_num%%_%%step_num%%" 
+		href="javascript:setCollapsed_%%sec_num%%_%%step_num%%(false)">
+		Expand Substeps</a>
+
+		<table class="inline_table" id="substep_table_%%sec_num%%_%%step_num%%" 
+		cellspacing="6" border="0">
+		%%substeps%% 
+		</table>
+
+		<script>
+		var collapsable_%%sec_num%%_%%step_num%% = false;
+		function setCollapseControlVisible_%%sec_num%%_%%step_num%%(visible) {
+			var expandControl = document.getElementById("expand_control_%%sec_num%%_%%step_num%%");
+			var collapseControl = document.getElementById("collapse_control_%%sec_num%%_%%step_num%%");
+			if (visible) {
+				expandControl.style.visibility="visible";
+				expandControl.style.display = 'block';
+				collapseControl.style.visibility="visible";
+				collapseControl.style.display = 'block';
+			}
+			else {
+				expandControl.style.visibility="hidden";
+				expandControl.style.display = 'none';
+				collapseControl.style.visibility="hidden";
+				collapseControl.style.display = 'none';
+			}
+		}
+		
+		function setCollapsed_%%sec_num%%_%%step_num%%(collapsed) {
+			
+			var expandControl = document.getElementById("expand_control_%%sec_num%%_%%step_num%%");
+			var collapseControl = document.getElementById("collapse_control_%%sec_num%%_%%step_num%%");				
+			var substepTable = document.getElementById("substep_table_%%sec_num%%_%%step_num%%");
+			
+			if (collapsed) {
+				
+				if (collapsable_%%sec_num%%_%%step_num%%) {
+					expandControl.style.visibility="visible";
+					expandControl.style.display = 'block';
+					collapseControl.style.visibility="hidden";
+					collapseControl.style.display = 'none';
+				}
+				
+				substepTable.style.visibility = "hidden";
+				substepTable.style.display = "none";
+			}
+			else {
+				if (collapsable_%%sec_num%%_%%step_num%%) {
+					expandControl.style.visibility="hidden";
+					expandControl.style.display = 'none';
+					collapseControl.style.visibility="visible";
+					collapseControl.style.display = 'block';
+				}
+				substepTable.style.visibility = "visible";
+				substepTable.style.display = "block";
+			}		
+		}	
+		
+		function setCollapsable_%%sec_num%%_%%step_num%%(collapsable) {
+			collapsable_%%sec_num%%_%%step_num%% = collapsable;
+			setCollapseControlVisible_%%sec_num%%_%%step_num%%(collapsable);
+		}
+		
+		setCollapsable_%%sec_num%%_%%step_num%%(%%collapsable%%);
+		setCollapsed_%%sec_num%%_%%step_num%%(%%initially_collapsed%%);
+
+		</script>
+		
+		%%signoff%%
+	
+	</td>
+	
+	<td valign="top" ng-show="%%show_figure%%">%%figure%%</td>
+</tr>
+<!-- end procedure step template -->

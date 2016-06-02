@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="../script/util.js"></script>
+<script src="../script/angular.js"></script>
+<script src="../script/angular-cookies.js"></script>
+<script src="../script/alignmentFixtureIdsController.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../css/srdb.css" />
+<title>Alignment Fixture IDs</title>
+</head>
+
+<body id="deeppinkgrad" ng-app="srdbAlignmentFixtureIdsApp">
+<form id="form1" name="form1" method="post" action="">
+<table width="95%" align="center" border="1" cellspacing="0" cellpadding="5" bordercolor="#DDDDDD" 
+		ng-controller="AlignmentFixtureIdsCtrl" ng-init="init('%%seg%%', '%%proc%%', '%%ver%%', '%%sec%%', '%%step%%')">
+	<tr>
+		<td align="center"><table width="95%" border="0" cellspacing="2" cellpadding="2">
+			<tr>
+				<td nowrap="nowrap">
+					<table border="0" cellspacing="2" cellpadding="2">
+					<tr>
+						<td nowrap="nowrap" colspan="2">
+							<span class="title1_not_bold"> 
+							<a href="../index.html"> Segment Repair Database</a></span>
+						</td>
+					</tr>
+					<tr>
+						<td nowrap="nowrap"><span class="title1">Alignment Fixture IDs</span></td>
+						<td valign="middle" nowrap="nowrap" class="title2">&nbsp;</td>
+					</tr>
+					</table>
+				</td>
+				<td nowrap="nowrap" align="right"><table border="0" cellspacing="2" cellpadding="2">
+					<tr>
+						<td align="right" nowrap="nowrap">
+							<span class="title1_not_bold">Segment</span>
+							<span class="title1_italic">{{config.seg}}</span></td>
+						</tr>
+					<tr>
+						<td align="right" nowrap="nowrap" class="title1_not_bold">
+							<!--
+							Procedure <span class="title1">%%proc%%</span>, 
+							Section <span class="title1">%%sec%%</span>, 
+							Step <span class="title1">%%step%%</span>
+							-->
+							&nbsp;
+							</td>
+							
+						</tr>
+				</table></td>
+			</tr>
+		</table></td>
+	</tr>
+
+	<tr>
+		<td align="center">
+			<br />
+			
+			<table align=center cellspacing="0" cellpadding="6" border="1" bordercolor="#BBBBBB">
+			
+				<tr>
+					<td align="center" valign="bottom" class="figure_caption">Point</td>
+					
+					<td align="center" class="figure_caption">Inner</td>
+					<td align="center" class="figure_caption">Outer</td>
+					<td align="center" class="figure_caption">T1</td>
+					<td align="center" class="figure_caption">Timestamp</td>
+				</tr>
+				
+				
+			
+				<tr ng-repeat="pointName in pointNames">
+				
+				<td ng-click="edit(pointName)" align="center">{{pointName}}</td>
+				
+				<!-- inner -->
+				<td ng-show="(fixtureType[pointName] == 'inner' && inedit[pointName])" align="center">
+					<select ng-model="pointData[pointName].fixtureId" 
+					ng-options="id for id in fixtureIds[pointName]"></select></td>
+				<td ng-show="fixtureType[pointName] == 'inner' && !inedit[pointName]" 
+					ng-click="edit(pointName)" align="center">			
+					{{pointData[pointName].fixtureId}}</td>
+				<td ng-show="(fixtureType[pointName] != 'inner')">&nbsp;</td>
+				
+				<!-- outer -->
+				<td ng-show="(fixtureType[pointName] == 'outer' && inedit[pointName])" align="center">
+					<select ng-model="pointData[pointName].fixtureId" 
+					ng-options="id for id in fixtureIds[pointName]"></select></td>
+				<td ng-show="fixtureType[pointName] == 'outer' && !inedit[pointName]" 
+					ng-click="edit(pointName)" align="center">			
+					{{pointData[pointName].fixtureId}}</td>
+				<td ng-show="(fixtureType[pointName] != 'outer')">&nbsp;</td>
+				
+				<!-- t1 -->
+				<td ng-show="(fixtureType[pointName] == 't1' && inedit[pointName])" align="center">
+					<select ng-model="pointData[pointName].fixtureId" 
+					ng-options="id for id in fixtureIds[pointName]"></select></td>
+				<td ng-show="fixtureType[pointName] == 't1' && !inedit[pointName]" 
+					ng-click="edit(pointName)" align="center">			
+					{{pointData[pointName].fixtureId}}</td>
+				<td ng-show="(fixtureType[pointName] != 't1')">&nbsp;</td>
+
+				<!-- timestamp -->
+				<td align="center">{{pointData[pointName].timestamp}}</td>
+				
+				<!-- buttons -->
+				<td ng-hide="inedit[pointName]">
+					<button ng-click="edit(pointName)">Edit</button></td>
+				<td ng-show="inedit[pointName]">
+					<button ng-click="save(pointName)">Save</button>
+					<button ng-click="cancel(pointName)">Cancel</button></td>
+				</tr>
+				
+			</table>
+			
+			<br />
+			</td></tr>
+			</table>
+</form>
+</body>
+</html>
